@@ -1,0 +1,6 @@
+{
+  "core_heartbeat": { "interval": 10 },
+  "confidence_report": {},
+  "foresight_trigger": {},
+  "pulse_health_check": { "active_units": ["core_heartbeat", "confidence_report", "foresight_trigger"] }
+}
