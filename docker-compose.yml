@@ -1,0 +1,80 @@
+services:
+
+  mind1:
+    build:
+      dockerfile: mind/submind1/Dockerfile
+    working_dir: /app
+    restart: unless-stopped
+    ports:
+      - "9001:9001"
+  mind2:
+    build:
+      dockerfile: mind/submind2/Dockerfile
+    working_dir: /app
+    restart: unless-stopped
+    ports:
+      - "9002:9002"
+  mind3:
+    build:
+      dockerfile: mind/submind3/Dockerfile
+    working_dir: /app
+    restart: unless-stopped
+    ports:
+      - "9003:9003"
+
+  brain1:
+    build:
+      dockerfile: brain/brain1/Dockerfile
+    working_dir: /api
+    restart: unless-stopped
+    ports:
+      - "10001:10001"
+  brain2:
+    build:
+      dockerfile: brain/brain2/Dockerfile
+    working_dir: /api
+    restart: unless-stopped
+    ports:
+      - "10002:10002"
+  brain3:
+    build:
+      dockerfile: brain/brain3/Dockerfile
+    working_dir: /api
+    restart: unless-stopped
+    ports:
+      - "10003:10003"
+
+
+
+
+
+
+  heart1:
+    build:
+      dockerfile: heart/heart1/Dockerfile
+    working_dir: /api
+    restart: unless-stopped
+    ports:
+      - "12001:12001"
+  heart2:
+    build:
+      dockerfile: heart/heart2/Dockerfile
+    working_dir: /api
+    restart: unless-stopped
+    ports:
+      - "12002:12002"
+  heart3:
+    build:
+      dockerfile: heart/heart3/Dockerfile
+    working_dir: /api
+    restart: unless-stopped
+    ports:
+      - "12003:12003"
+ # spine1:
+ #   build:
+ #     dockerfile: ./spine/spine1/Dockerfile
+ #   working_dir: /api
+ #   restart: unless-stopped
+ #   ports:
+ #     - "13001:13001"
+

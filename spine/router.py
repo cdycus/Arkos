@@ -53,7 +53,7 @@ def inject_pulse(pulse: dict):
     seen_pulses.add(pulse_id)
 
     try:
-        from pulsemesh.ledger.ledger import PulseLedger
+        from spine.ledger.ledger import PulseLedger
         ledger = PulseLedger()
         ledger.append(pulse["payload"], broadcast=False)
         logger.info(f"Injected pulse from {pulse.get('emitter')}: {pulse}")

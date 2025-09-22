@@ -1,7 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
-from pulsemesh.registry import PulseRegistry
-from pulsemesh.ledger.ledger import PulseLedger
-from pulsemesh.runtime.metrics import observe_pulse, start_prometheus_server
+from spine.registry import PulseRegistry
+from spine.ledger.ledger import PulseLedger
+from spine.runtime.metrics import observe_pulse, start_prometheus_server
 
 class PulseCoordinator:
     def __init__(self, config_path: str):
