@@ -1,0 +1,14 @@
+jetstream:
+  streams:
+    - name: PULSE_CORE
+      subjects: ["pulse.core.*"]
+      retention: limits
+      max_consumers: -1
+      max_msgs: 10000
+      max_age: 10m
+    - name: PULSE_GOVERNANCE
+      subjects: ["pulse.governance.*"]
+      retention: limits
+      max_consumers: -1
+      max_msgs: 10000
+      max_age: 30m

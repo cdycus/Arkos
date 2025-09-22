@@ -1,0 +1,10 @@
+{
+  "core_heartbeat": "pulse.core.heartbeat",
+  "foresight_trigger": "pulse.core.foresight",
+  "pulse_expression": "pulse.trace.expression",
+  "belief_update": "pulse.core.belief",
+  "drift_event": "pulse.trace.drift",
+  "governance_review": "pulse.governance.review",
+  "conflict_resolution": "pulse.governance.conflict",
+  "federation_sync": "pulse.federation.sync"
+}
