@@ -1,0 +1,8 @@
+
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'skippy-pulse'
+    static_configs:
+      - targets: ['skippy-pulse:8000']
