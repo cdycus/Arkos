@@ -3,6 +3,6 @@ global:
   scrape_interval: 5s
 
 scrape_configs:
-  - job_name: 'skippy-pulse'
+  - job_name: 'spine-pulse'
     static_configs:
-      - targets: ['skippy-pulse:8000']
+      - targets: ['spine:8000']
