@@ -1,0 +1,6 @@
+{
+  "memory": "http://localhost:5053/health",
+  "belief": "http://localhost:5052/health",
+  "foresight": "http://localhost:5051/health",
+  "ethics": "http://localhost:5054/health"
+}
