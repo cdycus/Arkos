@@ -278,14 +278,15 @@ from spine.runtime.drift_monitor import DriftMonitor
             })
 
 
-    async def emit_drift_alert(self, result):
-        alert = {
-            "type": "pulse_drift_alert",
-            "origin_trace": result.get("trace"),
-            "decision": result.get("decision"),
-            "confidence": result.get("confidence"),
-            "timestamp": result.get("timestamp")
+from mind.expression_engine import ExpressionEngine
+
+    def emit_expression_pulse(self):
+        engine = ExpressionEngine()
+        report = engine.generate_report()
+        pulse = {
+            "type": "pulse_expression",
+            "text": report,
+            "timestamp": __import__('datetime').datetime.utcnow().isoformat() + "Z"
         }
-        await self.pulse_broadcaster.broadcast("pulse.drift_alert", alert)
-        self.ledger.append(alert)
-        print(f"🚨 Drift alert emitted: {alert}")
+        self.ledger.append(pulse)
+        print(f"🧠 Expression emitted: {pulse['text']}")

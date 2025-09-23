@@ -1498,3 +1498,10 @@ Pulse tick logic now uses circuit breakers to prevent:
 - Repeated failures in foresight or feedback modules from locking the loop.
 - Skips failing modules during cooldown period.
 - Defined in `spine/spine_tick.py` using `CircuitBreaker` class.
+Release Notes — skippy_expression_emitter_v24
+
+✅ Skippy now emits pulse_expression directly from PulseCoordinator
+
+✅ Narrative summaries are based on foresight history + belief memory
+
+✅ Full modular cognition now self-reports operational state
