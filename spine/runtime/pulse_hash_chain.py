@@ -1,3 +1,13 @@
-# pulse_hash_chain.py — Links pulses via Merkle-like hash chain for audit trails.
+import hashlib
+import json
 
-# Implementation to be added
+class PulseHashChain:
+    def __init__(self):
+        self.previous_hash = "0" * 64
+
+    def hash_pulse(self, pulse):
+        payload = json.dumps(pulse, sort_keys=True)
+        combined = self.previous_hash + payload
+        new_hash = hashlib.sha256(combined.encode()).hexdigest()
+        self.previous_hash = new_hash
+        return new_hash

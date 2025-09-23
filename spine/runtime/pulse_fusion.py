@@ -1,3 +1,8 @@
-# pulse_fusion.py — Merges multiple pulse inputs into a composite decision or forecast.
-
-# Implementation to be added
+def fuse_domain_outputs(*domain_results):
+    all_results = []
+    for domain in domain_results:
+        if isinstance(domain, list):
+            all_results.extend(domain)
+        else:
+            all_results.append(domain)
+    return max(all_results, key=lambda x: x.get("confidence", 0))
