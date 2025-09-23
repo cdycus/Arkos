@@ -108,3 +108,8 @@ With Meta, Skippy becomes:
     • Sovereign in the truest sense
 
 
+
+## Meta-Foresight Alignment Modules
+- `foresight_audit.py` — audits prediction confidence vs. reality
+- `model_tuner.py` — adjusts foresight parameters based on error class
+- `meta_insight_log.py` — tracks long-term cognitive learning
