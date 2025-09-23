@@ -12,11 +12,21 @@ from spine.runtime.nats_client import NATSClient
 from spine.pulse_peer_registry import PulsePeerRegistry
 from spine.pulse_queue import PulseQueue
 
+from spine.runtime.pulse_delta import PulseDelta
+from spine.runtime.pulse_throttle import PulseThrottle
+from spine.runtime.pulse_quorum import PulseQuorum
+from spine.runtime.pulse_signature import PulseSigner
+from spine.runtime.pulse_heatmap_exporter import PulseHeatmap
 class PulseCoordinator:
     def __init__(self, config_path: str):
         self.registry = PulseRegistry(config_path)
         self.ledger = PulseLedger()
         self.executor = ThreadPoolExecutor(max_workers=5)
+        self.delta = PulseDelta()
+        self.throttle = PulseThrottle()
+        self.signer = PulseSigner()
+        self.heatmap = PulseHeatmap()
+        self.quorum = PulseQuorum(self.peer_registry.peers)
         self.peer_registry = PulsePeerRegistry("peer_registry.json")
         self.pulse_queue = PulseQueue()
         self.nats_client = NATSClient("spine/nats_config.json")
@@ -82,6 +92,9 @@ class PulseCoordinator:
                 duration = time.time() - start
                 observe_pulse(pulse['type'], duration)
                 self.ledger.append(pulse)
+                pulse['signature'] = self.signer.sign(pulse)
+                self.heatmap.log(pulse['type'])
+                self.delta.update(pulse.get('confidence', 0.0), pulse.get('fatigue', 0.0))
 
     async def start_loop(self):
         await self.nats_client.connect()
@@ -90,7 +103,7 @@ class PulseCoordinator:
             self.run_tick()
             await self.emit_heartbeat()
             await self.emit_service_specific_pulse()
-            await asyncio.sleep(1)
+            await asyncio.sleep(self.throttle.get_wait_time())
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
@@ -100,3 +113,32 @@ if __name__ == "__main__":
         loop.run_until_complete(coordinator.start_loop())
     except KeyboardInterrupt:
         print("👋 Coordinator shutdown requested.")
+
+
+
+from spine.runtime.pulse_delta import PulseDelta
+from spine.runtime.pulse_throttle import PulseThrottle
+from spine.runtime.pulse_quorum import PulseQuorum
+from spine.runtime.pulse_signature import PulseSigner
+from spine.runtime.pulse_heatmap_exporter import PulseHeatmap
+
+    def setup_runtime_modules(self):
+        self.pulse_delta = PulseDelta()
+        self.pulse_throttle = PulseThrottle()
+        self.pulse_quorum = PulseQuorum(self.peer_registry.peers)
+        self.pulse_signer = PulseSigner()
+        self.pulse_heatmap = PulseHeatmap()
+
+    async def start_loop(self):
+        await self.nats_client.connect()
+        await self.mesh_router.start_nats_listener()
+        self.setup_runtime_modules()
+        while True:
+            self.run_tick()
+            await self.emit_heartbeat()
+            await self.emit_service_specific_pulse()
+            if self.pulse_delta.should_emit_alert():
+                print("🌀 Pulse Delta health check triggered.")
+            self.pulse_heatmap.log("tick")
+            wait = self.pulse_throttle.get_wait_time()
+            await asyncio.sleep(wait)
