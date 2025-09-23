@@ -6,6 +6,6 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt
 
-COPY ../brain .
+COPY spine .
 
-CMD ["fastapi", "run", "api.py", "--port", "8000"]
+CMD ["python", "coordinator.py"]
