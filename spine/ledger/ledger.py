@@ -3,7 +3,7 @@ from spine.router import broadcast_pulse
 
 logger = logging.getLogger("skippy-ledger")
 
- class PulseLedger:
+class PulseLedger:
     def __init__(self):
         self.ledger = []
 
