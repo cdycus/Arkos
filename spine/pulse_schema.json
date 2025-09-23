@@ -1,0 +1,53 @@
+{
+  "pulse_heartbeat": {
+    "required": [
+      "type",
+      "sovereign_id",
+      "service",
+      "timestamp",
+      "confidence",
+      "fatigue"
+    ],
+    "optional": [],
+    "description": "System liveness and self-report per core"
+  },
+  "pulse_foresight": {
+    "required": [
+      "type",
+      "sovereign_id",
+      "timestamp",
+      "strategy",
+      "confidence"
+    ],
+    "optional": [
+      "risk",
+      "alignment_score",
+      "trace_id"
+    ],
+    "description": "Projected decision path selected by foresight engine"
+  },
+  "pulse_feedback": {
+    "required": [
+      "type",
+      "sovereign_id",
+      "timestamp",
+      "emotion",
+      "entropy"
+    ],
+    "optional": [
+      "volatility"
+    ],
+    "description": "Emotion or felt state from Heart module"
+  },
+  "pulse_expression": {
+    "required": [
+      "type",
+      "sovereign_id",
+      "timestamp",
+      "self_report",
+      "alignment_score"
+    ],
+    "optional": [],
+    "description": "Natural language summary of self-aware cognitive state"
+  }
+}
