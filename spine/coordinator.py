@@ -250,7 +250,7 @@ from spine.runtime.feedback_engine import PulseFeedbackEngine
                 self.log_pulse_feedback(pulse)
 
 
-from spine.runtime.foresight_runner import run_foresight_class
+from spine.runtime.belief_synthesizer import synthesize_from_foresight
 
     def handle_pulse(self, pulse):
         if pulse.get("type") == "pulse_foresight_trigger":
@@ -259,4 +259,6 @@ from spine.runtime.foresight_runner import run_foresight_class
             beliefs = pulse.get("belief_ids", [])
             result = run_foresight_class(f_class, context, beliefs)
             self.ledger.append(result)
-            print(f"📡 Foresight result emitted: {result}")
+            belief = synthesize_from_foresight(result)
+            print(f"📡 Foresight result: {result}")
+            print(f"🧠 Belief updated: {belief}")
