@@ -248,3 +248,15 @@ from spine.runtime.feedback_engine import PulseFeedbackEngine
                 observe_pulse(pulse['type'], duration)
                 self.ledger.append(pulse)
                 self.log_pulse_feedback(pulse)
+
+
+from spine.runtime.foresight_runner import run_foresight_class
+
+    def handle_pulse(self, pulse):
+        if pulse.get("type") == "pulse_foresight_trigger":
+            f_class = pulse.get("class", "policy")
+            context = pulse.get("context", "unspecified")
+            beliefs = pulse.get("belief_ids", [])
+            result = run_foresight_class(f_class, context, beliefs)
+            self.ledger.append(result)
+            print(f"📡 Foresight result emitted: {result}")
