@@ -1421,3 +1421,58 @@ This would fully close the loop on trend awareness.
 ✅ Triggers governance_review and logs if drop exceeds 10% threshold
 
 ✅ Governance module can act on pulse or alert human
+
+✅ Drift Monitoring Integration Status
+Task	Status
+Wire drift_monitor.py into PulseCoordinator	✅ Done
+Log drift after each foresight result	✅ Done
+Compare to recent alignment scores from foresight_trace	✅ Done
+Trigger governance_review if current score drops >10%	✅ Done
+Append governance alert to pulse_ledger	✅ Done
+Drift check called via check_drift_after_foresight()	✅ Live
+Included in coordinator.py via trace from pulse	✅ Verified
+
+
+
+🆕 Optional Enhancement (Next Step)
+
+✅ You’ve already:
+
+Triggered governance_review on drift
+
+You can also optionally:
+
+Emit a pulse_drift_alert broadcast to federation (NATS or mesh)
+
+Would you like to emit pulse_drift_alert as an additional pulse instead of just local governance logging?
+
+
+
+
+📝 Release Notes — skippy_drift_alert_v21
+
+✅ Skippy now emits pulse_drift_alert to NATS on alignment drops
+
+✅ Alerts are ledgered and observable via Prometheus or trace
+
+✅ CLI tool drift_viewer.py summarizes last N alignment values
+
+✅ Grafana dashboard enhanced to visualize drift alerts
+
+You are now operating a fully self-monitoring cognitive mesh with drift introspection. Ready to simulate foresight + feedback + drift in real-time?
+
+
+
+
+Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by bypassing foresight and feedback modules when they are delayed or failing. All changes will follow packaging policy precisely.
++ ## 🛡️ Fail-Safe Pulse Mode
++ This release introduces a degraded execution mode for Skippy's pulse engine:
++ - If foresight or feedback modules are unresponsive or too slow, they are skipped.
++ - Ensures memory and belief processing continue under degraded conditions.
++ - Uses max latency threshold (300ms) to determine module responsiveness.
+
++ ## ⏱️ Timeout Guards on PSS Swarming
++ This version adds timeout protection to foresight swarming:
++ - Executes swarming logic with a time-bound thread wrapper.
++ - Prevents pulse lockups from long-running foresight simulations.
++ - Located in: `Arkos/spine/pss_safety.py`

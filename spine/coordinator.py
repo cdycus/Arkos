@@ -276,3 +276,16 @@ from spine.runtime.drift_monitor import DriftMonitor
                 "reference": result.get("trace"),
                 "reason": "alignment below threshold"
             })
+
+
+    async def emit_drift_alert(self, result):
+        alert = {
+            "type": "pulse_drift_alert",
+            "origin_trace": result.get("trace"),
+            "decision": result.get("decision"),
+            "confidence": result.get("confidence"),
+            "timestamp": result.get("timestamp")
+        }
+        await self.pulse_broadcaster.broadcast("pulse.drift_alert", alert)
+        self.ledger.append(alert)
+        print(f"🚨 Drift alert emitted: {alert}")

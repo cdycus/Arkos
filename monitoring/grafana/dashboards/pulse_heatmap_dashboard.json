@@ -1,4 +1,14 @@
 {
   "title": "Skippy Pulse Heatmap",
-  "panels": []
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Alignment Drift Events",
+      "targets": [
+        {
+          "expr": "pulse_drift_alert"
+        }
+      ]
+    }
+  ]
 }
