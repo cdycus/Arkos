@@ -1,6 +1,7 @@
 import json
 from swarm_local import perturb_scenario, score_outcome
 from fusion import fuse
+from foresight_replay import ForesightReplay
 
 def handle_foresight_trigger(payload):
     context = payload.get("context", {})
@@ -11,6 +12,7 @@ def handle_foresight_trigger(payload):
     fused_result = fuse(scored_paths)
 
     foresight_result = {
+        "pulse_id": "foresight_result_policy_0001",  # In a real system, this would be UUID/time-based
         "type": "foresight_result",
         "class": "policy",
         "decision": fused_result["decision"],
@@ -20,4 +22,15 @@ def handle_foresight_trigger(payload):
 
     with open("foresight_policy_result.json", "w") as f:
         json.dump(foresight_result, f, indent=2)
+
+    # Integration: Log the foresight result against expected vs actual for future evaluation
+    replayer = ForesightReplay()
+    replayer.emit_delta_feedback(
+        trace_id=foresight_result["pulse_id"],
+        predicted_conf=foresight_result["confidence"],
+        actual_score=0.67,  # Placeholder for real-world outcome data
+        action_taken=foresight_result["decision"],
+        used=True  # Whether this decision was acted upon
+    )
+
     return foresight_result
