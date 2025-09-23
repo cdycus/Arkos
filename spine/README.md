@@ -578,4 +578,86 @@ Rebuilding now.
     • pulse_topic_map.json
     • pulse_peer_registry.py
     • pulse_strategy.md
-Let me know when you’re ready to wire this into live runtime or add pulse SLA enforcement. 
+Let me know when you’re ready to wire this into live runtime or add pulse SLA enforcement.
+
+🧪 Simulated Foresight Trace: System-Wide
+
+🟢 1. PULSE TRIGGERED
+Trigger Type: foresight_trigger
+Class: policy
+Source: Human prompt (new climate policy review)
+{
+  "pulse_id": "pulse_policy_0001",
+  "type": "foresight_trigger",
+  "class": "policy",
+  "context": "climate_regulation_update",
+  "belief_ids": ["b-eco-impact", "b-stakeholder-agreement"],
+  "priority": "high",
+  "timestamp": 1695240000
+}
+
+📡 2. ROUTING
+    • Routed via pulse_shard_router to → foresight_policy.trigger_handler
+    • Classification: critical
+    • Decay curve = negligible (fresh pulse)
+    • Priority Score = 3.0 (base 1 + critical 2)
+
+
+🧬 3. SCENARIO PERTURBATION (in swarm_local.py)
+[
+  { "strategy": "regulate now", "timing": "immediate" },
+  { "strategy": "delay 6 months", "timing": "deferred" },
+  { "strategy": "delegate to committee", "timing": "externalize" }
+]
+
+🧮 4. SCORING (in swarm_local.score_outcome)
+[
+  { "strategy": "regulate now", "confidence": 0.95 },
+  { "strategy": "delay 6 months", "confidence": 0.60 },
+  { "strategy": "delegate to committee", "confidence": 0.40 }
+]
+🧪 5. FUSION (in fusion.py)
+{
+  "decision": "regulate now",
+  "confidence": 0.95,
+  "fused_trace": {
+    "strategy": "regulate now",
+    "timing": "immediate",
+    "score": 0.9,
+    "alignment": 1.0,
+    "confidence": 0.95
+  }
+}
+
+🔁 6. RESULT EMITTED
+{
+  "pulse_id": "foresight_result_policy_0001",
+  "type": "foresight_result",
+  "class": "policy",
+  "decision": "regulate now",
+  "confidence": 0.95,
+  "trace": {
+    "strategy": "regulate now",
+    "timing": "immediate"
+  },
+  "origin": "pulse_policy_0001",
+  "timestamp": 1695240005
+}
+
+    • Logged to: pulse_ledger, meta/foresight_quality.json
+    • Optionally broadcast to governance, memory, dashboard
+
+🧭 7. META & FEEDBACK
+    • MetaLayer.evaluate_trace() confirms confidence threshold passed
+    • Memory.log() stores foresight as simulated: true, decision_used: true
+    • PulseFeedbackEngine marks pulse as successful → no topology change
+📋 TRACE LOG SUMMARY
+[00:00] Pulse Received: pulse_policy_0001
+[00:01] Routed → foresight_policy.trigger_handler
+[00:02] Perturbation complete → 3 scenarios
+[00:03] Scoring complete (best = 0.95)
+[00:04] Fused → decision: regulate now
+[00:05] Emitted foresight_result_policy_0001
+[00:06] Meta approved + memory logged
+
+This simulation represents the full loop from signal to sovereign choice. 
