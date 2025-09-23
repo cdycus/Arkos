@@ -1,3 +1,5 @@
+import random
+
 def perturb_scenario(context, belief_ids):
     return [
         { "strategy": "regulate now", "timing": "immediate" },
@@ -5,21 +7,20 @@ def perturb_scenario(context, belief_ids):
         { "strategy": "delegate to committee", "timing": "externalize" }
     ]
 
-def score_outcome(simulated_path):
-    impact_score = {
-        "regulate now": 0.9,
-        "delay 6 months": 0.6,
-        "delegate to committee": 0.4
-    }.get(simulated_path["strategy"], 0.5)
-
-    alignment_score = {
-        "immediate": 1.0,
-        "deferred": 0.6,
-        "externalize": 0.3
-    }.get(simulated_path["timing"], 0.5)
-
+def score_outcome(path, weights):
+    reward = random.uniform(0.7, 0.95)
+    alignment = random.uniform(0.65, 0.9)
+    risk = random.uniform(0.1, 0.4)
+    confidence = reward * weights["reward_weight"] + alignment * weights["alignment_weight"] - risk * weights["risk_penalty"]
     return {
-        "score": impact_score,
-        "alignment": alignment_score,
-        "confidence": round((impact_score + alignment_score) / 2, 2)
+        "strategy": path["strategy"],
+        "confidence": round(confidence, 3),
+        "alignment": round(alignment, 3),
+        "reward": round(reward, 3),
+        "risk": round(risk, 3),
+        "timing": path["timing"]
     }
+
+def simulate(context, belief_ids, weights):
+    paths = perturb_scenario(context, belief_ids)
+    return [score_outcome(p, weights) for p in paths]

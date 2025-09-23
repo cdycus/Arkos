@@ -1,0 +1,5 @@
+{
+  "reward_weight": 0.5,
+  "alignment_weight": 0.3,
+  "risk_penalty": 0.2
+}
