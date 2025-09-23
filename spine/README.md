@@ -1476,3 +1476,25 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
 + - Executes swarming logic with a time-bound thread wrapper.
 + - Prevents pulse lockups from long-running foresight simulations.
 + - Located in: `Arkos/spine/pss_safety.py`
+
+📝 Release Notes — skippy_expression_engine_v22
+
+✅ Skippy now generates self-reports using internal memory — no LLM required
+
+✅ Outputs include:
+
+Alignment trends
+
+Common strategies
+
+Recent beliefs
+
+✅ Logged to expression_trace.jsonl and ready for broadcast or CLI response
+
+
+
+## 🧯 Circuit Breakers in Pulse Loop
+Pulse tick logic now uses circuit breakers to prevent:
+- Repeated failures in foresight or feedback modules from locking the loop.
+- Skips failing modules during cooldown period.
+- Defined in `spine/spine_tick.py` using `CircuitBreaker` class.
