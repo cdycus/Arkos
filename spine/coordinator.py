@@ -290,3 +290,15 @@ from mind.expression_engine import ExpressionEngine
         }
         self.ledger.append(pulse)
         print(f"🧠 Expression emitted: {pulse['text']}")
+
+
+import time
+
+    def start_loop_with_expression(self, interval=60):
+        self.last_expression = time.time()
+        while True:
+            self.run_tick()
+            if time.time() - self.last_expression >= interval:
+                self.emit_expression_pulse()
+                self.last_expression = time.time()
+            time.sleep(1)
