@@ -1,11 +1,27 @@
+from fastapi import FastAPI, Request
+import uvicorn
 from concurrent.futures import ThreadPoolExecutor
-from spine.registry import PulseRegistry
-from spine.ledger.ledger import PulseLedger
-from spine.runtime.metrics import observe_pulse, start_prometheus_server
+# from spine.registry import PulseRegistry
+# from spine.ledger.ledger import PulseLedger
+# from spine.runtime.metrics import observe_pulse, start_prometheus_server
+from registry import PulseRegistry
+#from registry import PulseRegistry
+if __name__ == '__main__':
+    import registry as registry
+if __name__ == '__main__':
+    import runtime.metrics as observe_pulse
+
+if __name__ == '__main__':
+    import runtime.metrics as start_prometheus_server
+
+if __name__ == '__main__':
+    import ledger as PulseLedger
 
 class PulseCoordinator:
     def __init__(self, config_path: str):
+
         self.registry = PulseRegistry(config_path)
+        #self.registry = registry(config_path)
         self.ledger = PulseLedger()
         self.executor = ThreadPoolExecutor(max_workers=5)
         start_prometheus_server()
@@ -26,3 +42,11 @@ class PulseCoordinator:
         while True:
             self.run_tick()
             time.sleep(1)
+
+if __name__ == "__main__":
+    import time
+    pc = PulseCoordinator("registry.json")
+    print("🧠 Skippy Coordinator starting tick loop...")
+    while True:
+        pc.run_tick()
+        time.sleep(1)

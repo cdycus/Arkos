@@ -70,14 +70,13 @@ services:
     restart: unless-stopped
     ports:
       - "12003:12003"
- # spine1:
- #   build:
- #     dockerfile: ./spine/spine1/Dockerfile
- #   working_dir: /api
- #   restart: unless-stopped
- #   ports:
- #     - "13001:13001"
-
+  spine1:
+    build:
+      dockerfile: spine/spine1/Dockerfile
+    working_dir: /app
+    restart: unless-stopped
+    ports:
+      - "13001:13001"
 
 
   prometheus:
@@ -85,7 +84,7 @@ services:
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
     ports:
-      - "9090:9090"
+      - "9091:9091"
     restart: unless-stopped
 
   grafana:
