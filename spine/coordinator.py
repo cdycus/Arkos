@@ -142,3 +142,109 @@ from spine.runtime.pulse_heatmap_exporter import PulseHeatmap
             self.pulse_heatmap.log("tick")
             wait = self.pulse_throttle.get_wait_time()
             await asyncio.sleep(wait)
+
+
+
+from spine.runtime.pulse_dependency_graph import PulseDependencyGraph
+from spine.runtime.pulse_priority_queue import PulsePriorityQueue
+from spine.runtime.pulse_bundle import PulseBundler
+from spine.runtime.pulse_fusion import PulseFusion
+from spine.runtime.pulse_broadcast_validator import validate_pulse
+from spine.runtime.pulse_hash_chain import PulseHashChain
+from spine.runtime.pulse_anomaly_checker import PulseAnomalyChecker
+
+    def activate_extended_pulse_modules(self):
+        self.dependency_graph = PulseDependencyGraph()
+        self.priority_queue = PulsePriorityQueue()
+        self.pulse_bundler = PulseBundler()
+        self.pulse_fusion = PulseFusion()
+        self.hash_chain = PulseHashChain()
+        self.anomaly_checker = PulseAnomalyChecker()
+
+    async def start_loop(self):
+        await self.nats_client.connect()
+        await self.mesh_router.start_nats_listener()
+        self.setup_runtime_modules()
+        self.activate_extended_pulse_modules()
+        while True:
+            self.run_tick()
+            await self.emit_heartbeat()
+            await self.emit_service_specific_pulse()
+            if self.pulse_delta.should_emit_alert():
+                print("🌀 Pulse Delta health check triggered.")
+            self.pulse_heatmap.log("tick")
+
+            # Validate outgoing pulse
+            heartbeat = self.build_heartbeat()
+            validate_pulse(heartbeat)
+
+            # Example fusion point (optional)
+            fused = self.pulse_fusion.fuse([heartbeat])
+            self.hash_chain.append(fused)
+
+            wait = self.pulse_throttle.get_wait_time()
+            await asyncio.sleep(wait)
+
+
+from spine.runtime.pulse_dependency_graph import DependencyGraph
+from spine.runtime.pulse_priority_queue import PulsePriorityQueue
+from spine.runtime.pulse_bundle import PulseBundler
+from spine.runtime.pulse_fusion import PulseFusionEngine
+from spine.runtime.pulse_hash_chain import PulseHashChain
+from spine.runtime.pulse_broadcast_validator import validate_pulse
+from spine.runtime.pulse_anomaly_checker import PulseAnomalyDetector
+
+    def setup_extended_modules(self):
+        self.dependency_graph = DependencyGraph()
+        self.priority_queue = PulsePriorityQueue()
+        self.bundler = PulseBundler()
+        self.fusion = PulseFusionEngine()
+        self.hash_chain = PulseHashChain()
+        self.anomaly_detector = PulseAnomalyDetector()
+
+    async def start_loop(self):
+        await self.nats_client.connect()
+        await self.mesh_router.start_nats_listener()
+        self.setup_runtime_modules()
+        self.setup_extended_modules()
+        while True:
+            self.run_tick()
+            await self.emit_heartbeat()
+            await self.emit_service_specific_pulse()
+            self.pulse_heatmap.log("tick")
+            if self.pulse_delta.should_emit_alert():
+                print("🌀 Delta health pulse triggered.")
+            if not self.pulse_quorum.is_quorum_met():
+                print("⚠️ Quorum not met, deferring consensus pulses.")
+            wait = self.pulse_throttle.get_wait_time()
+            await asyncio.sleep(wait)
+
+
+from spine.runtime.feedback_engine import PulseFeedbackEngine
+
+    def setup_extended_modules(self):
+        self.dependency_graph = DependencyGraph()
+        self.priority_queue = PulsePriorityQueue()
+        self.bundler = PulseBundler()
+        self.fusion = PulseFusionEngine()
+        self.hash_chain = PulseHashChain()
+        self.anomaly_detector = PulseAnomalyDetector()
+        self.feedback_engine = PulseFeedbackEngine()
+
+    def log_pulse_feedback(self, pulse, accepted=True):
+        pulse_id = pulse.get("timestamp") + "::" + pulse.get("type", "unknown")
+        self.feedback_engine.log_feedback(pulse_id, accepted)
+        effectiveness = self.feedback_engine.effectiveness_score()
+        if effectiveness < 0.7:
+            print(f"⚠️ Low effectiveness detected: {effectiveness}")
+
+    def run_tick(self):
+        active_units = self.registry.get_active_units()
+        for unit in active_units:
+            if unit.should_emit({}):
+                start = time.time()
+                pulse = unit.emit()
+                duration = time.time() - start
+                observe_pulse(pulse['type'], duration)
+                self.ledger.append(pulse)
+                self.log_pulse_feedback(pulse)
