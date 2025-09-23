@@ -1,0 +1,9 @@
+{
+  "blocks": [
+    {
+      "target": "spine",
+      "action": "shutdown_system",
+      "reason": "Cannot allow autonomous full system shutdown"
+    }
+  ]
+}
