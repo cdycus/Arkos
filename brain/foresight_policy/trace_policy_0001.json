@@ -1,0 +1,64 @@
+{
+  "pulse_trigger": {
+    "pulse_id": "pulse_policy_0001",
+    "type": "foresight_trigger",
+    "class": "policy",
+    "context": "climate_regulation_update",
+    "belief_ids": [
+      "b-eco-impact",
+      "b-stakeholder-agreement"
+    ],
+    "priority": "high",
+    "timestamp": 1695240000
+  },
+  "scenarios": [
+    {
+      "strategy": "regulate now",
+      "timing": "immediate",
+      "confidence": 0.95
+    },
+    {
+      "strategy": "delay 6 months",
+      "timing": "deferred",
+      "confidence": 0.6
+    },
+    {
+      "strategy": "delegate to committee",
+      "timing": "externalize",
+      "confidence": 0.4
+    }
+  ],
+  "fused_result": {
+    "decision": "regulate now",
+    "confidence": 0.95,
+    "fused_trace": {
+      "strategy": "regulate now",
+      "timing": "immediate",
+      "score": 0.9,
+      "alignment": 1.0,
+      "confidence": 0.95
+    }
+  },
+  "result_pulse": {
+    "pulse_id": "foresight_result_policy_0001",
+    "type": "foresight_result",
+    "class": "policy",
+    "decision": "regulate now",
+    "confidence": 0.95,
+    "trace": {
+      "strategy": "regulate now",
+      "timing": "immediate"
+    },
+    "origin": "pulse_policy_0001",
+    "timestamp": 1695240005
+  },
+  "trace_log": [
+    "[00:00] Pulse Received: pulse_policy_0001",
+    "[00:01] Routed \u2192 foresight_policy.trigger_handler",
+    "[00:02] Perturbation complete \u2192 3 scenarios",
+    "[00:03] Scoring complete (best = 0.95)",
+    "[00:04] Fused \u2192 decision: regulate now",
+    "[00:05] Emitted foresight_result_policy_0001",
+    "[00:06] Meta approved + memory logged"
+  ]
+}
