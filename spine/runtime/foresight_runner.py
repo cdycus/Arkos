@@ -28,6 +28,7 @@ def run_foresight_class(f_class, context, belief_ids):
 
     pulse_id = f"foresight_{int(time.time())}"
     trace = {
+        "belief_ids": belief_ids,
         "pulse_id": pulse_id,
         "class": f_class,
         "context": context,
