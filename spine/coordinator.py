@@ -50,3 +50,17 @@ if __name__ == "__main__":
     while True:
         pc.run_tick()
         time.sleep(1)
+
+
+    def build_heartbeat(self):
+        return {
+            "type": "pulse_heartbeat",
+            "sovereign_id": "skippy-alpha-v1",
+            "timestamp": __import__('datetime').datetime.utcnow().isoformat() + "Z",
+            "confidence": 0.87,
+            "fatigue": 0.15
+        }
+
+    async def emit_heartbeat(self):
+        pulse = self.build_heartbeat()
+        await self.mesh_router.pulse_broadcaster.broadcast_heartbeat(pulse)

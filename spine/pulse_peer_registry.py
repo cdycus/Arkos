@@ -43,3 +43,10 @@ def log_emitter_pulse(pulse_type, node_id):
 
 if __name__ == "__main__":
     log_emitter_pulse("pulse_expression", "skippy-alpha-v1")
+
+
+    def update(self, peer_id, timestamp):
+        self.peers[peer_id] = {
+            "last_seen": timestamp
+        }
+        print(f"Updated peer registry: {peer_id} at {timestamp}")

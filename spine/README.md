@@ -29,3 +29,16 @@ skippy_lifecycle.json
 mission_beacon.json
 
 meta_ledger.json
+
+
+📝 Release Notes — skippy_mesh_heartbeat_v3
+
+✅ Added structured heartbeat emitter logic inside PulseCoordinator
+
+✅ Enabled NATS-based pulse subscriptions for peer-to-peer discovery
+
+✅ Updated PulsePeerRegistry to track last seen per peer
+
+✅ Now logs and routes all inbound pulse messages into the queue
+
+✅ Completed NATS federation heartbeat readiness

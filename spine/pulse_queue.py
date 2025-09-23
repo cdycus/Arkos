@@ -25,3 +25,8 @@ class PulseQueue:
         if not subject:
             raise ValueError(f"No topic mapping for pulse type: {pulse_type}")
         await self.js.subscribe(subject, durable=durable, cb=handler)
+
+
+    def enqueue_inbound(self, pulse):
+        print(f"Inbound pulse received: {pulse}")
+        self.queue.append(pulse)
