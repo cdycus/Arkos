@@ -1,0 +1,8 @@
+{
+  "servers": [
+    "nats://nats:4222"
+  ],
+  "heartbeat_subject": "pulse.heartbeat",
+  "discovery_subject": "pulse.discovery",
+  "reconnect": true
+}

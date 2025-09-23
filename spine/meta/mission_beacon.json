@@ -1,0 +1,10 @@
+{
+  "alignment_signal": 0.92,
+  "drift_risk": 0.03,
+  "last_heartbeat": "2025-09-23T15:43:01.661253Z",
+  "trust_vector": [
+    "ethics",
+    "alignment",
+    "coherence"
+  ]
+}
