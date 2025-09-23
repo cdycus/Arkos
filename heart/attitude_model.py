@@ -21,3 +21,15 @@ class AttitudeModel:
 
     def get_attitude(self):
         return self.mode
+
+
+class AttitudeBayes:
+    def update_state(self, successes, failures):
+        # Simple posterior estimator
+        total = successes + failures
+        p_success = successes / total if total else 0.5
+        if p_success > 0.7:
+            return "assertive"
+        elif p_success < 0.3:
+            return "defensive"
+        return "neutral"

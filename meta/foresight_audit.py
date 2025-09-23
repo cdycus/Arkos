@@ -23,3 +23,8 @@ class ForesightAudit:
                 })
 
         return self.drift_flags
+
+
+class DriftPredictor:
+    def predict_drift(self, delta):
+        return "likely_recurrence" if abs(delta) > 0.25 else "transient"

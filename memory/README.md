@@ -250,3 +250,7 @@ It becomes a self-training, self-compressing, hybrid cognitive system—built fo
 
 
 
+
+## Models Added
+- OutcomeClassifier: predicts if memory is useful
+- RetentionScoreModel: decides retention level

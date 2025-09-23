@@ -11,3 +11,12 @@ class ErrorRouter:
         self.errors.append(error_obj)
         print(f"[{level.upper()}] {source} → {message}")
         return error_obj
+
+
+class ErrorClassifier:
+    def classify(self, message):
+        if "timeout" in message:
+            return "network"
+        if "fail" in message:
+            return "system"
+        return "unknown"

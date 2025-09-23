@@ -7,3 +7,6 @@ This module governs Skippy's foresight and decision logic. It includes:
 - `escalation_log.py` — logs all overrides or policy violations
 
 Policy file: `policy_rules.json` defines intent-level blocking rules.
+
+## Models Added
+- ConfidenceAnomalyDetector: flags low-confidence foresights

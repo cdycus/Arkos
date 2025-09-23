@@ -18,3 +18,9 @@ class FeedbackEngine:
     def _save(self):
         with open(self.log_file, "w") as f:
             json.dump(self.log, f, indent=2)
+
+
+class OutcomeClassifier:
+    def predict_outcome(self, memory_embedding):
+        # Placeholder for success/failure classification
+        return "used" if sum(memory_embedding) > 0 else "ignored"

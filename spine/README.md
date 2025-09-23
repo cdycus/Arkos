@@ -8,3 +8,6 @@ This layer coordinates Skippy's internal communication and execution flow.
 - `startup_integrity_check.py` — Validates critical files before boot
 
 All modules contribute to runtime observability, resilience, and trust.
+
+## Models Added
+- ErrorClassifier: classifies system errors for routing

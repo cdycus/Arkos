@@ -11,3 +11,10 @@ class AuditEngine:
                 "confidence": confidence
             }
         return {"status": "pass", "confidence": confidence}
+
+
+class ConfidenceAnomalyDetector:
+    def detect(self, foresight_result):
+        if foresight_result.get("confidence", 0) < 0.4:
+            return "low_confidence_anomaly"
+        return "normal"
