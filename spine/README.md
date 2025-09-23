@@ -1358,4 +1358,66 @@ pulse_fusion.py (multiclass)	🟥 Empty — needs domain fusion strategy
 
 ✅ NATS emission and federation safety fully supported
 
+🧠 Drift Detection — Status Audit
 
+| Layer                          | Status                     | Details                          |
+| ------------------------------ | -------------------------- | -------------------------------- |
+| `drift_monitor.py`             | ✅ Exists                   | Tracks recent alignment scores   |
+| Hooked into `foresight_runner` | ❌ No                       | Not currently checking for drift |
+| Alerts `governance_review`     | ✅ In earlier builds        |                                  |
+| Tracks trends or flags drops   | ❌ Not wired at runtime yet |                                  |
+| Visualizes drift via CLI/Dash  | ❌ Not implemented          |                                  |
+
+
+🔍 What’s Missing
+
+Runtime drift call — not invoked after foresight simulation
+
+Alignment trend memory — no rolling average or recent window
+
+Alerting mechanism — no trigger if alignment drops across pulses
+
+Drift-to-belief correlation — no link between pulse alignment drop and belief volatility
+
+CLI / Log summaries — no visualization or analytics yet
+
+✅ What’s Already Available
+
+drift_monitor.py exists
+
+PulseCoordinator logs confidence + alignment
+
+belief_graph.json captures volatility
+
+pulse_feedback_engine captures success/failure
+
+🧠 Summary
+| Feature              | Status       |
+| -------------------- | ------------ |
+| Drift detector logic | ✅ Exists     |
+| Runtime integration  | ❌ Not wired  |
+| Governance trigger   | ❌ Not active |
+| Alert/log on drop    | ❌ Missing    |
+| Visual audit support | ❌ Missing    |
+
+
+
+Would you like me to:
+
+Wire drift_monitor.py into PulseCoordinator post-foresight?
+
+Log and trigger governance when drop exceeds threshold?
+
+Emit a pulse_drift_alert?
+
+This would fully close the loop on trend awareness.
+
+📝 Release Notes — skippy_drift_monitor_v20
+
+✅ Drift detection now active in PulseCoordinator
+
+✅ Checks recent foresight alignment scores
+
+✅ Triggers governance_review and logs if drop exceeds 10% threshold
+
+✅ Governance module can act on pulse or alert human

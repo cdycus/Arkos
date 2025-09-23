@@ -262,3 +262,17 @@ from spine.runtime.belief_synthesizer import synthesize_from_foresight
             belief = synthesize_from_foresight(result)
             print(f"📡 Foresight result: {result}")
             print(f"🧠 Belief updated: {belief}")
+
+
+from spine.runtime.drift_monitor import DriftMonitor
+
+    def check_drift_after_foresight(self, result):
+        drift = DriftMonitor()
+        if drift.detect_drift(result.get("confidence", 1.0)):
+            print("⚠️ Alignment drift detected!")
+            self.ledger.append({
+                "type": "governance_review",
+                "trigger": "drift_monitor",
+                "reference": result.get("trace"),
+                "reason": "alignment below threshold"
+            })
