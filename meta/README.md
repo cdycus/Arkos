@@ -113,3 +113,14 @@ With Meta, Skippy becomes:
 - `foresight_audit.py` — audits prediction confidence vs. reality
 - `model_tuner.py` — adjusts foresight parameters based on error class
 - `meta_insight_log.py` — tracks long-term cognitive learning
+
+
+📦 Release Notes
+
+spine/runtime_status.py — New file
+
+spine/error_router.py — New file
+
+spine/startup_integrity_check.py — New file
+
+spine/README.md — Updated with module documentation
