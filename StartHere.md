@@ -39,8 +39,8 @@ Identify any architecture or design constraints
 Identify any architecture or design constraints
 
 
-# Quuality Assurance Review Runbook
-- Title: Python Principal Engineer (Expert)
+# Quality Assurance Python Principal Engineer Review Runbook
+- Take on the Title: Python Principal Engineer (Expert)
 ## Task 1
 - Use Attached file only! nothing stored off.
 - List every Directory

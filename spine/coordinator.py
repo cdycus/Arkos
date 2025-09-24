@@ -122,7 +122,7 @@ from spine.runtime.pulse_quorum import PulseQuorum
 from spine.runtime.pulse_signature import PulseSigner
 from spine.runtime.pulse_heatmap_exporter import PulseHeatmap
 
-    def setup_runtime_modules(self):
+def setup_runtime_modules(self):
         self.pulse_delta = PulseDelta()
         self.pulse_throttle = PulseThrottle()
         self.pulse_quorum = PulseQuorum(self.peer_registry.peers)
