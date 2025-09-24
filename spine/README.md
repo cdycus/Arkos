@@ -1649,3 +1649,19 @@ Hardened alignment between brain, heart, and policy modules.
 
 Introduced minimal sovereign gatekeeping at execution layer.
 
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+spine/runtime/pulse_quorum_check.py — standalone quorum validator script
+
+✏️ Updated Files:
+spine/meta/loader.py
+
+
+🧾 Release Notes (Patch 3 - Pulse Quorum & Policy Logging)
+✨ New Features:
+
+Added runtime script to check pulse quorum among mind, brain, and heart nodes.
+
+Integrated policy loader logging for better observability and audit trace.
