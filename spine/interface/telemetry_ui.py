@@ -38,3 +38,25 @@ def behavior_bias_view():
     except Exception as e:
         html = f"""<html><body><h3>Error</h3><pre>{e}</pre></body></html>"""
     return html
+
+
+@app.get("/cognition", response_class=HTMLResponse)
+def cognition_dashboard():
+    try:
+        with open("spine/meta/meta_skippy_state.json", "r") as f:
+            state = json.load(f)
+        html = f"""<html><body>
+        <h3>🧠 Skippy Cognitive State</h3>
+        <pre>{json.dumps(state, indent=2)}</pre>
+        </body></html>"""
+    except Exception as e:
+        html = f"""<html><body><h3>Error loading cognition</h3><pre>{e}</pre></body></html>"""
+    return html
+
+@app.get("/api/cognition")
+def cognition_api():
+    try:
+        with open("spine/meta/meta_skippy_state.json", "r") as f:
+            return json.load(f)
+    except:
+        return {"error": "Unable to load state"}

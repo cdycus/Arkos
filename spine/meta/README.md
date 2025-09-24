@@ -42,3 +42,18 @@ Trait biases expression decisions (novelty vs stability)
 Experiences now auto-pruned to avoid cognitive overload
 
 Self-awareness profile tracks alignment, bias, and mood in real time
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+spine/interface/skippy_cognition.py — FastAPI API exposing current Skippy state via /cognition
+
+✏️ Updated Files:
+spine/interface/telemetry_ui.py
+
+🧾 Release Notes (Patch 15 - Cognitive Telemetry API)
+✨ New Features:
+
+Added /state to Skippy’s telemetry dashboard showing live cognitive profile.
+
+New /cognition FastAPI route returns Skippy’s self-assessment state as JSON.
