@@ -1505,3 +1505,13 @@ Release Notes — skippy_expression_emitter_v24
 ✅ Narrative summaries are based on foresight history + belief memory
 
 ✅ Full modular cognition now self-reports operational state
+
+
+
+📝 Release Notes — skippy_expression_timer_v25
+
+✅ Skippy now self-reports on a timed loop
+
+✅ Emits pulse_expression at configurable interval (entropy-based triggering to come)
+
+✅ Core tick loop enhanced with reflective cognition

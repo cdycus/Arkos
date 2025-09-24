@@ -254,3 +254,29 @@ It becomes a self-training, self-compressing, hybrid cognitive system—built fo
 ## Models Added
 - OutcomeClassifier: predicts if memory is useful
 - RetentionScoreModel: decides retention level
+
+
+📦 Beginning Memory Stack v1
+📚 Memory Stack v1 Modules
+Module Path	Functionality
+memory/retention_manager.py	Scores beliefs for retention/discarding
+memory/memory_contradiction_detector.py	Detects conflicting beliefs
+memory/memory_weighting.py	Adjusts belief strength over time
+data/decision_audit_log.jsonl	Logs foresight → belief → expression chain
+
+🔍 Files Added
+| File Path                                 | Type   | Description                                                    |
+| ----------------------------------------- | ------ | -------------------------------------------------------------- |
+| `memory/retention_manager.py`             | 🆕 New | Scores beliefs for usefulness based on usage, emotion, and age |
+| `memory/memory_contradiction_detector.py` | 🆕 New | Detects logically conflicting beliefs                          |
+| `memory/memory_weighting.py`              | 🆕 New | Adds weighted belief values based on volatility and age        |
+| `data/decision_audit_log.jsonl`           | 🆕 New | Logs full cognition chain from foresight → belief → expression |
+
+📝 Release Notes — skippy_memory_stack_v1
+
+✅ All belief-based memory enhancements added
+
+✅ No runtime changes yet — fully passive modules
+
+✅ Ready to power retention pruning, belief drift detection, and cognitive audit loops
+
