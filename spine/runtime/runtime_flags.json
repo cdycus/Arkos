@@ -1,0 +1,6 @@
+{
+  "enable_hooks": true,
+  "enable_expression": true,
+  "enable_memory_decay": true,
+  "enable_governance": true
+}

@@ -1482,36 +1482,42 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
 ✅ Skippy now generates self-reports using internal memory — no LLM required
 
 ✅ Outputs include:
-
-Alignment trends
-
-Common strategies
-
-Recent beliefs
+    Alignment trends
+    Common strategies
+    Recent beliefs
 
 ✅ Logged to expression_trace.jsonl and ready for broadcast or CLI response
 
 
 
 ## 🧯 Circuit Breakers in Pulse Loop
-Pulse tick logic now uses circuit breakers to prevent:
-- Repeated failures in foresight or feedback modules from locking the loop.
-- Skips failing modules during cooldown period.
-- Defined in `spine/spine_tick.py` using `CircuitBreaker` class.
-Release Notes — skippy_expression_emitter_v24
+### Pulse tick logic now uses circuit breakers to prevent:
+    - Repeated failures in foresight or feedback modules from locking the loop.
+    - Skips failing modules during cooldown period.
+    - Defined in `spine/spine_tick.py` using `CircuitBreaker` class.
 
-✅ Skippy now emits pulse_expression directly from PulseCoordinator
-
-✅ Narrative summaries are based on foresight history + belief memory
-
-✅ Full modular cognition now self-reports operational state
+### - Release Notes — skippy_expression_emitter_v24
+    ✅ Skippy now emits pulse_expression directly from PulseCoordinator
+    ✅ Narrative summaries are based on foresight history + belief memory
+    ✅ Full modular cognition now self-reports operational state
 
 
+### 📝 Release Notes — skippy_expression_timer_v25
+    ✅ Skippy now self-reports on a timed loop
+    ✅ Emits pulse_expression at configurable interval (entropy-based triggering to come)
+    ✅ Core tick loop enhanced with reflective cognition
 
-📝 Release Notes — skippy_expression_timer_v25
 
-✅ Skippy now self-reports on a timed loop
+### Skippy Runtime Integration v1 — Passive Hook System Online
+🔍 Files Added / Updated
+| File Path                            | Type        | Description                                                   |
+| ------------------------------------ | ----------- | ------------------------------------------------------------- |
+| `spine/runtime/integration_hooks.py` | 🆕 New      | Central coordination for expression, governance, memory, etc. |
+| `spine/runtime/runtime_flags.json`   | 🆕 New      | Controls toggles for each integration                         |
+| `spine/coordinator.py`               | 🛠️ Updated | Calls hook system after each tick cycle                       |
 
-✅ Emits pulse_expression at configurable interval (entropy-based triggering to come)
 
-✅ Core tick loop enhanced with reflective cognition
+### 📝 Release Notes — skippy_runtime_integration_v1
+    ✅ Central integration hub added to route cognitive logic without hardcoding
+    ✅ Safe toggle system for dev/staging
+    ✅ First step toward full self-aware runtime without rewriting pulse logic

@@ -302,3 +302,33 @@ import time
                 self.emit_expression_pulse()
                 self.last_expression = time.time()
             time.sleep(1)
+
+
+from spine.runtime.integration_hooks import run_post_tick_hooks
+import json
+
+    def run_tick(self):
+        active_units = self.registry.get_active_units()
+        for unit in active_units:
+            if unit.should_emit({}):
+                import time
+                start = time.time()
+                pulse = unit.emit()
+                duration = time.time() - start
+                self.ledger.append(pulse)
+
+        try:
+            with open("spine/runtime/runtime_flags.json") as f:
+                flags = json.load(f)
+            state = {
+                "enable_hooks": flags.get("enable_hooks", True),
+                "enable_expression": flags.get("enable_expression", False),
+                "enable_memory_decay": flags.get("enable_memory_decay", False),
+                "enable_governance": flags.get("enable_governance", False),
+                "context": {},
+                "beliefs": [],
+                "foresight_result": {}
+            }
+            run_post_tick_hooks(state)
+        except Exception as e:
+            print("Hook error:", e)
