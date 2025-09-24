@@ -1665,3 +1665,10 @@ spine/meta/loader.py
 Added runtime script to check pulse quorum among mind, brain, and heart nodes.
 
 Integrated policy loader logging for better observability and audit trace.
+
+🧾 Release Notes (Patch 5 - Chaos Mode Recovery)
+✨ New Features:
+
+Implements simulated faults on sovereign subsystems (restart, shutdown, slowdown).
+
+Includes basic self-recovery mechanics for resilience testing.
