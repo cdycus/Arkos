@@ -1801,4 +1801,14 @@ spine/pulse_runtime.py
 
 All pulses now undergo strict integrity checks before processing.
 
-Unit test validates signing and verification round-trip logic.
+Unit test validates signing and verification round-trip logic
+
+📦 Release Notes v0.9.2 (Updated)
+
+✅ Moved pulse control files to Arkos/spine/pulse (correct layer)
+
+✅ Guard logic enforces latency caps and error isolation
+
+✅ Trace logs ensure microtick observability
+
+✅ Metrics emit Prometheus-compatible counters and durations
