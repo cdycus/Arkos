@@ -311,3 +311,12 @@ Trained (in future model phase)
 Audited via the decision_audit_log.jsonl
 
 
+📝 Release Notes — skippy_memory_stack_v2
+
+✅ Skippy’s memory is now introspective, volatile-aware, and self-organizing
+
+✅ Full semantic and mutation logic added
+
+✅ No runtime wiring yet — all helper modules, testable in isolation
+
+✅ Enables future wiring into expression, foresight, and governance
