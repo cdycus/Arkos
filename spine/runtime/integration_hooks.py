@@ -142,3 +142,21 @@ def compute_and_log_intent(context, pulse={}):
             "timestamp": __import__('datetime').datetime.utcnow().isoformat() + "Z"
         }) + "\n")
     return intent, route
+
+
+from mind.attention.attention_score import score_attention
+from mind.attention.focus_queue import FocusQueue
+import json
+
+focus = FocusQueue()
+
+def update_attention(pulses):
+    logs = []
+    for pulse in pulses:
+        score = score_attention(pulse)
+        focus.add(pulse, score)
+        logs.append(f"Scored {pulse.get('type')} = {score}")
+    snapshot = focus.snapshot()
+    with open("data/attention_snapshot.json", "w") as f:
+        json.dump(snapshot[:5], f, indent=2)
+    return logs

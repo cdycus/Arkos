@@ -408,3 +408,17 @@ from spine.runtime.integration_hooks import compute_and_log_intent
         intent, route = compute_and_log_intent(context, pulse)
         print("🎯 Intent:", intent)
         print("➡️ Routed to:", route)
+
+
+from spine.runtime.integration_hooks import update_attention
+
+    def run_attention_cycle(self):
+        pulses = [
+            {"type": "pulse_foresight_result", "urgency": 0.9, "novel": True, "age": 1},
+            {"type": "pulse_expression", "urgency": 0.5, "novel": False, "age": 2},
+            {"type": "pulse_state_of_being", "urgency": 0.6, "novel": True, "age": 0}
+        ]
+        logs = update_attention(pulses)
+        print("🧠 Attention Scoring:")
+        for log in logs:
+            print(" -", log)

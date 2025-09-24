@@ -1409,20 +1409,16 @@ Wire drift_monitor.py into PulseCoordinator post-foresight?
 Log and trigger governance when drop exceeds threshold?
 
 Emit a pulse_drift_alert?
-
 This would fully close the loop on trend awareness.
 
-📝 Release Notes — skippy_drift_monitor_v20
+### 📝 Release Notes — skippy_drift_monitor_v20
+    ✅ Drift detection now active in PulseCoordinator
+    ✅ Checks recent foresight alignment scores
+    ✅ Triggers governance_review and logs if drop exceeds 10% threshold
+    ✅ Governance module can act on pulse or alert human
+    ✅ Drift Monitoring Integration Status
 
-✅ Drift detection now active in PulseCoordinator
 
-✅ Checks recent foresight alignment scores
-
-✅ Triggers governance_review and logs if drop exceeds 10% threshold
-
-✅ Governance module can act on pulse or alert human
-
-✅ Drift Monitoring Integration Status
 Task	Status
 Wire drift_monitor.py into PulseCoordinator	✅ Done
 Log drift after each foresight result	✅ Done
@@ -1432,37 +1428,22 @@ Append governance alert to pulse_ledger	✅ Done
 Drift check called via check_drift_after_foresight()	✅ Live
 Included in coordinator.py via trace from pulse	✅ Verified
 
-
-
 🆕 Optional Enhancement (Next Step)
 
 ✅ You’ve already:
+    Triggered governance_review on drift
 
-Triggered governance_review on drift
+#### You can also optionally:
+    Emit a pulse_drift_alert broadcast to federation (NATS or mesh)
+    Would you like to emit pulse_drift_alert as an additional pulse instead of just local governance logging?
 
-You can also optionally:
-
-Emit a pulse_drift_alert broadcast to federation (NATS or mesh)
-
-Would you like to emit pulse_drift_alert as an additional pulse instead of just local governance logging?
-
-
-
-
-📝 Release Notes — skippy_drift_alert_v21
-
-✅ Skippy now emits pulse_drift_alert to NATS on alignment drops
-
-✅ Alerts are ledgered and observable via Prometheus or trace
-
-✅ CLI tool drift_viewer.py summarizes last N alignment values
-
-✅ Grafana dashboard enhanced to visualize drift alerts
+### 📝 Release Notes — skippy_drift_alert_v21
+    ✅ Skippy now emits pulse_drift_alert to NATS on alignment drops
+    ✅ Alerts are ledgered and observable via Prometheus or trace
+    ✅ CLI tool drift_viewer.py summarizes last N alignment values
+    ✅ Grafana dashboard enhanced to visualize drift alerts
 
 You are now operating a fully self-monitoring cognitive mesh with drift introspection. Ready to simulate foresight + feedback + drift in real-time?
-
-
-
 
 Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by bypassing foresight and feedback modules when they are delayed or failing. All changes will follow packaging policy precisely.
 + ## 🛡️ Fail-Safe Pulse Mode
@@ -1590,11 +1571,22 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
 | `spine/coordinator.py`               | 🛠️ Updated | Adds `run_intent_cycle()` to test intent and log decisions |
 
 
-📝 Release Notes — skippy_intent_integration_v2
+### 📝 Release Notes — skippy_intent_integration_v2
+    ✅ Skippy now selects and logs goal-directed intent during runtime
+    ✅ Can adapt cognition strategy based on mood and system state
+    ✅ Supports routing pulses toward mission-aligned modules
 
-✅ Skippy now selects and logs goal-directed intent during runtime
+### 📦 Skippy Attention Integration v2 — Focused Cognition Runtime
+🔍 Files Updated
+| File Path                            | Type        | Description                                                 |
+| ------------------------------------ | ----------- | ----------------------------------------------------------- |
+| `spine/runtime/integration_hooks.py` | 🛠️ Updated | Added `update_attention()` with focus scoring + queue       |
+| `spine/coordinator.py`               | 🛠️ Updated | Added `run_attention_cycle()` to demonstrate prioritization |
 
-✅ Can adapt cognition strategy based on mood and system state
+📝 Release Notes — skippy_attention_integration_v2
 
-✅ Supports routing pulses toward mission-aligned modules
+✅ Skippy now scores incoming thoughts for attention
 
+✅ Maintains a live focus queue with top cognitive priorities
+
+✅ Exports snapshot to attention_snapshot.json
