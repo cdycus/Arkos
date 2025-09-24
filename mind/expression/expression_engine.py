@@ -51,3 +51,15 @@ class ExpressionEngine:
         os.makedirs("data", exist_ok=True)
         with open(self.expression_log, "a") as f:
             f.write(json.dumps(entry) + "\n")
+
+
+# Emotional influence injection
+try:
+    from heart.state_of_being import get_current_emotion
+except ImportError:
+    def get_current_emotion():
+        return "neutral"
+
+def apply_emotion_to_expression(expression):
+    emotion = get_current_emotion()
+    return f"{expression} [{emotion}]"

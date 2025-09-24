@@ -104,3 +104,20 @@ Add cv_engine.py, audio_listener.py, realtime_loop.py
 
 ✅ No live emission yet — passive modules ready for future hooks
 
+
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+tests/test_emotion_expression_integration.py — tests emotional expression influence
+
+🧾 Release Notes (Patch 2 - Emotional Routing)
+✨ New Features:
+
+Injected get_current_emotion() hook into expression_engine.py.
+
+Added emotional context tagging to all expressed outputs.
+
+Unit test created for validating emotional patch behavior.
+✏️ Updated Files:
+mind/expression/expression_engine.py
