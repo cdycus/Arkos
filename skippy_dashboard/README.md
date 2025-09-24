@@ -51,4 +51,20 @@ Backend (Flask) must be running on http://localhost:8088.
 | 🔁 Live refresh     | Pulls from real JSON log files            |
 | 🧩 Modular React    | Easy to expand with new panels later      |
 
+📂 Skippy Memory Browser – Key Goals
+| Feature                              | Description                                     |
+| ------------------------------------ | ----------------------------------------------- |
+| 📚 Full belief list                  | From `belief_log.jsonl`                         |
+| 🧭 Filter by date, topic, confidence |                                                 |
+| 🔎 Search by keyword                 | Full-text match of belief statements            |
+| 🧠 Snapshot view                     | View beliefs as they existed at a point in time |
+| 📈 Belief history trace (optional)   | See how one belief evolved (confidence, usage)  |
 
+
+📦 Implementation Plan
+| File                            | Purpose                               |
+| ------------------------------- | ------------------------------------- |
+| `app/memory/page.tsx`           | Route `/memory` with full UI          |
+| `components/MemoryTable.tsx`    | Main table with search + sort         |
+| `components/MemoryFilters.tsx`  | Filter controls                       |
+| `components/MemorySnapshot.tsx` | Time-based snapshot viewer (optional) |
