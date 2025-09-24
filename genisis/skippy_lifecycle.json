@@ -1,0 +1,10 @@
+{
+  "status": "active",
+  "phase": "operational",
+  "birth_timestamp": "2025-09-21T23:58:00Z",
+  "origin_node": "skippy-alpha-v1",
+  "current_mission": "Maintain sovereign cognition and foresight autonomy.",
+  "can_fork": true,
+  "can_merge": true,
+  "last_integrity_check": "2025-09-21T23:55:00Z"
+}
