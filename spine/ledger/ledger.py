@@ -1,5 +1,5 @@
 import logging
-from spine.router import broadcast_pulse
+from router import broadcast_pulse
 
 logger = logging.getLogger("skippy-ledger")
 

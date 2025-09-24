@@ -3,20 +3,55 @@ import os
 import time
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
-from spine.registry import PulseRegistry
-from spine.ledger.ledger import PulseLedger
-from spine.runtime.metrics import observe_pulse, start_prometheus_server
-from spine.runtime.mesh_router import PulseMeshRouter
-from spine.runtime.pulse_broadcast import PulseBroadcaster
-from spine.runtime.nats_client import NATSClient
-from spine.pulse_peer_registry import PulsePeerRegistry
-from spine.pulse_queue import PulseQueue
+from registry import PulseRegistry
+from ledger.ledger import PulseLedger
+from runtime.metrics import observe_pulse, start_prometheus_server
+from runtime.mesh_router import PulseMeshRouter
+from runtime.pulse_broadcast import PulseBroadcaster
+from runtime.nats_client import NATSClient
+from pulse_peer_registry import PulsePeerRegistry
+from pulse_queue import PulseQueue
+from runtime.pulse_dependency_graph import PulseDependencyGraph
+from runtime.pulse_priority_queue import PulsePriorityQueue
+from runtime.pulse_bundle import PulseBundler
+from runtime.pulse_fusion import PulseFusion
+from runtime.pulse_broadcast_validator import validate_pulse
+from runtime.pulse_hash_chain import PulseHashChain
+from runtime.pulse_anomaly_checker import PulseAnomalyChecker
+from runtime.pulse_delta import PulseDelta
+from runtime.pulse_throttle import PulseThrottle
+from runtime.pulse_quorum import PulseQuorum
+from runtime.pulse_signature import PulseSigner
+from runtime.pulse_heatmap_exporter import PulseHeatmap
+from runtime.pulse_delta import PulseDelta
+from runtime.pulse_throttle import PulseThrottle
+from runtime.pulse_quorum import PulseQuorum
+from runtime.pulse_signature import PulseSigner
+from runtime.pulse_heatmap_exporter import PulseHeatmap
+import time
+from runtime.feedback_engine import PulseFeedbackEngine
+from runtime.pulse_dependency_graph import DependencyGraph
+from runtime.pulse_priority_queue import PulsePriorityQueue
+from runtime.pulse_bundle import PulseBundler
+from runtime.pulse_fusion import PulseFusionEngine
+from runtime.pulse_hash_chain import PulseHashChain
+from runtime.pulse_broadcast_validator import validate_pulse
+from runtime.pulse_anomaly_checker import PulseAnomalyDetector
+from runtime.belief_synthesizer import synthesize_from_foresight
+from runtime.drift_monitor import DriftMonitor
+from mind.expression_engine import ExpressionEngine
+from runtime.integration_hooks import run_post_tick_hooks
+import json
+from runtime.integration_hooks import process_feedback_and_memory
+from runtime.integration_hooks import emit_expression
+from runtime.integration_hooks import refresh_beliefs
+from runtime.integration_hooks import emit_reflection
+from runtime.integration_hooks import update_intent
+from runtime.integration_hooks import compute_and_log_intent
+from runtime.integration_hooks import update_attention
 
-from spine.runtime.pulse_delta import PulseDelta
-from spine.runtime.pulse_throttle import PulseThrottle
-from spine.runtime.pulse_quorum import PulseQuorum
-from spine.runtime.pulse_signature import PulseSigner
-from spine.runtime.pulse_heatmap_exporter import PulseHeatmap
+
+
 class PulseCoordinator:
     def __init__(self, config_path: str):
         self.registry = PulseRegistry(config_path)
@@ -116,18 +151,14 @@ if __name__ == "__main__":
 
 
 
-from spine.runtime.pulse_delta import PulseDelta
-from spine.runtime.pulse_throttle import PulseThrottle
-from spine.runtime.pulse_quorum import PulseQuorum
-from spine.runtime.pulse_signature import PulseSigner
-from spine.runtime.pulse_heatmap_exporter import PulseHeatmap
+
 
 def setup_runtime_modules(self):
-        self.pulse_delta = PulseDelta()
-        self.pulse_throttle = PulseThrottle()
-        self.pulse_quorum = PulseQuorum(self.peer_registry.peers)
-        self.pulse_signer = PulseSigner()
-        self.pulse_heatmap = PulseHeatmap()
+    self.pulse_delta = PulseDelta()
+    self.pulse_throttle = PulseThrottle()
+    self.pulse_quorum = PulseQuorum(self.peer_registry.peers)
+    self.pulse_signer = PulseSigner()
+    self.pulse_heatmap = PulseHeatmap()
 
     async def start_loop(self):
         await self.nats_client.connect()
@@ -143,15 +174,6 @@ def setup_runtime_modules(self):
             wait = self.pulse_throttle.get_wait_time()
             await asyncio.sleep(wait)
 
-
-
-from spine.runtime.pulse_dependency_graph import PulseDependencyGraph
-from spine.runtime.pulse_priority_queue import PulsePriorityQueue
-from spine.runtime.pulse_bundle import PulseBundler
-from spine.runtime.pulse_fusion import PulseFusion
-from spine.runtime.pulse_broadcast_validator import validate_pulse
-from spine.runtime.pulse_hash_chain import PulseHashChain
-from spine.runtime.pulse_anomaly_checker import PulseAnomalyChecker
 
     def activate_extended_pulse_modules(self):
         self.dependency_graph = PulseDependencyGraph()
@@ -186,13 +208,7 @@ from spine.runtime.pulse_anomaly_checker import PulseAnomalyChecker
             await asyncio.sleep(wait)
 
 
-from spine.runtime.pulse_dependency_graph import DependencyGraph
-from spine.runtime.pulse_priority_queue import PulsePriorityQueue
-from spine.runtime.pulse_bundle import PulseBundler
-from spine.runtime.pulse_fusion import PulseFusionEngine
-from spine.runtime.pulse_hash_chain import PulseHashChain
-from spine.runtime.pulse_broadcast_validator import validate_pulse
-from spine.runtime.pulse_anomaly_checker import PulseAnomalyDetector
+
 
     def setup_extended_modules(self):
         self.dependency_graph = DependencyGraph()
@@ -220,7 +236,6 @@ from spine.runtime.pulse_anomaly_checker import PulseAnomalyDetector
             await asyncio.sleep(wait)
 
 
-from spine.runtime.feedback_engine import PulseFeedbackEngine
 
     def setup_extended_modules(self):
         self.dependency_graph = DependencyGraph()
@@ -250,7 +265,6 @@ from spine.runtime.feedback_engine import PulseFeedbackEngine
                 self.log_pulse_feedback(pulse)
 
 
-from spine.runtime.belief_synthesizer import synthesize_from_foresight
 
     def handle_pulse(self, pulse):
         if pulse.get("type") == "pulse_foresight_trigger":
@@ -264,7 +278,6 @@ from spine.runtime.belief_synthesizer import synthesize_from_foresight
             print(f"🧠 Belief updated: {belief}")
 
 
-from spine.runtime.drift_monitor import DriftMonitor
 
     def check_drift_after_foresight(self, result):
         drift = DriftMonitor()
@@ -278,7 +291,6 @@ from spine.runtime.drift_monitor import DriftMonitor
             })
 
 
-from mind.expression_engine import ExpressionEngine
 
     def emit_expression_pulse(self):
         engine = ExpressionEngine()
@@ -292,7 +304,6 @@ from mind.expression_engine import ExpressionEngine
         print(f"🧠 Expression emitted: {pulse['text']}")
 
 
-import time
 
     def start_loop_with_expression(self, interval=60):
         self.last_expression = time.time()
@@ -304,8 +315,6 @@ import time
             time.sleep(1)
 
 
-from spine.runtime.integration_hooks import run_post_tick_hooks
-import json
 
     def run_tick(self):
         active_units = self.registry.get_active_units()
@@ -334,7 +343,6 @@ import json
             print("Hook error:", e)
 
 
-from spine.runtime.integration_hooks import process_feedback_and_memory
 
     def run_feedback_cycle(self):
         pulse = {
@@ -354,14 +362,12 @@ from spine.runtime.integration_hooks import process_feedback_and_memory
             print(" -", log)
 
 
-from spine.runtime.integration_hooks import emit_expression
 
     def run_expression_cycle(self):
         result = emit_expression()
         print("🗣️ Expression emitted:", result)
 
 
-from spine.runtime.integration_hooks import refresh_beliefs
 
     def run_belief_refresh_cycle(self):
         expr_text = "Skippy expressing: regulation improves outcome"
@@ -375,7 +381,6 @@ from spine.runtime.integration_hooks import refresh_beliefs
             print(" -", b)
 
 
-from spine.runtime.integration_hooks import emit_reflection
 
     def run_reflection_cycle(self):
         pulse_history = [
@@ -387,7 +392,6 @@ from spine.runtime.integration_hooks import emit_reflection
         print("🪞 Reflection Emitted:", result)
 
 
-from spine.runtime.integration_hooks import update_intent
 
     def run_intent_cycle(self):
         context = {
@@ -400,7 +404,8 @@ from spine.runtime.integration_hooks import update_intent
         print("🎯 Intent selected:", intent, "| Route:", route)
 
 
-from spine.runtime.integration_hooks import compute_and_log_intent
+
+
 
     def run_intent_cycle(self):
         context = {"mood": "strained", "entropy": 0.65, "fatigue": 0.72}
@@ -410,7 +415,7 @@ from spine.runtime.integration_hooks import compute_and_log_intent
         print("➡️ Routed to:", route)
 
 
-from spine.runtime.integration_hooks import update_attention
+
 
     def run_attention_cycle(self):
         pulses = [
