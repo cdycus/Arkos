@@ -32,3 +32,13 @@ spine/meta/trait_history.jsonl — rolling trait state memory log
 Traits (e.g., optimism, caution) are now saved to persistent trait history log.
 
 Can be queried or charted over time to monitor cognitive shifts.
+
+
+🧾 Release Notes (Patch 14 - Adaptive Intelligence Loop)
+✨ New Features:
+
+Trait biases expression decisions (novelty vs stability)
+
+Experiences now auto-pruned to avoid cognitive overload
+
+Self-awareness profile tracks alignment, bias, and mood in real time
