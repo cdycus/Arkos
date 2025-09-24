@@ -87,3 +87,15 @@ from memory.belief_updater import update_beliefs_from_expression
 def refresh_beliefs(beliefs, last_expression_text):
     updated = update_beliefs_from_expression(beliefs, last_expression_text)
     return updated
+
+
+from mind.state.state_of_being import compute_state_of_being
+from mind.state.pulse_state_of_being import create_state_pulse
+
+def update_state(pulse_history):
+    state = compute_state_of_being(pulse_history)
+    pulse = create_state_pulse(state)
+    with open("data/mood_log.jsonl", "a") as f:
+        import json
+        f.write(json.dumps(pulse) + "\n")
+    return state

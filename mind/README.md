@@ -102,3 +102,19 @@ graph TD
 | 🔁 Update `integration_hooks.py`       | Inject and trace feedback, memory, and expression |
 | 📦 Patch `PulseCoordinator.run_tick()` | Send full pulse into state context                |
 | 🧾 Add belief + trace linkage          | Trace “why” Skippy chose something, for auditing  |
+
+
+📦 Skippy Emotional State Integration v3 — Mood-Driven Behavior
+🔍 Files Updated
+| File Path                               | Type        | Description                                                  |
+| --------------------------------------- | ----------- | ------------------------------------------------------------ |
+| `spine/runtime/integration_hooks.py`    | 🛠️ Updated | Added `update_state()` for computing mood from pulse history |
+| `mind/expression/expression_planner.py` | 🛠️ Updated | Uses `mood` to select expression type                        |
+| `mind/decision/fusion_aware.py`         | 🛠️ Updated | Weighs decision scoring down if fatigue is high              |
+
+
+### 📝 Release Notes — skippy_state_integration_v3
+    ✅ Mood is now computed and logged each tick
+    ✅ Expression strategy changes with emotional state
+    ✅ Decision weighting adapts to fatigue and misalignment
+    ✅ Skippy now self-regulates based on emotional posture
