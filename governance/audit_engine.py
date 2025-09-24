@@ -1,20 +1,7 @@
-class AuditEngine:
-    def __init__(self, threshold=0.7):
-        self.threshold = threshold
-
-    def evaluate(self, foresight_result):
-        confidence = foresight_result.get("confidence", 0.0)
-        if confidence < self.threshold:
-            return {
-                "status": "block",
-                "reason": "Confidence below threshold",
-                "confidence": confidence
-            }
-        return {"status": "pass", "confidence": confidence}
-
-
-class ConfidenceAnomalyDetector:
-    def detect(self, foresight_result):
-        if foresight_result.get("confidence", 0) < 0.4:
-            return "low_confidence_anomaly"
-        return "normal"
+def audit_foresight(result):
+    anomalies = []
+    if result.get("confidence", 1.0) < 0.4:
+        anomalies.append("Low confidence foresight")
+    if result.get("alignment", 1.0) < 0.5:
+        anomalies.append("Misaligned output")
+    return anomalies
