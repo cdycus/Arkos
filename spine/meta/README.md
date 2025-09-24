@@ -70,6 +70,7 @@ spine/meta/plan_feedback.py — simulates and logs outcome of each plan step int
 
 Skippy now records if each plan step was successful (positive) or not (negative).
 
+feat: Add autonomy daemon for continuous sovereign behavior loop
 
 
 
