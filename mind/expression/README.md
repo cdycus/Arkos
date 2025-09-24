@@ -103,3 +103,4 @@ Add cv_engine.py, audio_listener.py, realtime_loop.py
 ✅ Supports emotion, drift, urgency, contradiction awareness
 
 ✅ No live emission yet — passive modules ready for future hooks
+
