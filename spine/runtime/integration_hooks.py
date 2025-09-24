@@ -56,3 +56,27 @@ def process_feedback_and_memory(pulse, feedback_outcome="success"):
         logs.append(f"Beliefs updated: {len(pulse['beliefs'])}")
 
     return logs
+
+
+from mind.expression.expression_planner import select_expression_type
+from mind.expression.expression_impact_tuner import adjust_expression_tone
+from mind.expression.pulse_expression_intent import build_expression_intent
+import json, os
+
+def emit_expression():
+    expr_type = select_expression_type({"entropy": 0.6})
+    base_text = f"Skippy expressing: {expr_type}"
+    tuned = adjust_expression_tone(base_text, entropy=0.6)
+
+    intent = build_expression_intent(expr_type)
+
+    os.makedirs("data", exist_ok=True)
+    log_path = "data/expression_snapshot_log.jsonl"
+    with open(log_path, "a") as f:
+        f.write(json.dumps({
+            "intent": intent,
+            "expression": tuned,
+            "timestamp": intent["timestamp"]
+        }) + "\n")
+
+    return tuned

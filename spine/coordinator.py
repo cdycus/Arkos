@@ -352,3 +352,10 @@ from spine.runtime.integration_hooks import process_feedback_and_memory
         print("Feedback + Memory Loop:")
         for log in logs:
             print(" -", log)
+
+
+from spine.runtime.integration_hooks import emit_expression
+
+    def run_expression_cycle(self):
+        result = emit_expression()
+        print("🗣️ Expression emitted:", result)

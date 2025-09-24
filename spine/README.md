@@ -1534,3 +1534,15 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
     ✅ Fully connects feedback to memory updates
     ✅ Traces pulse beliefs, updates retention and weight
     ✅ Forms base loop: foresight → pulse → feedback → belief change
+
+📦 Skippy Expression Emission v3 — Narrative Loop Live
+🔍 Files Updated
+| File Path                            | Type        | Description                                                   |
+| ------------------------------------ | ----------- | ------------------------------------------------------------- |
+| `spine/runtime/integration_hooks.py` | 🛠️ Updated | Adds `emit_expression()` — generates + logs pulse\_expression |
+| `spine/coordinator.py`               | 🛠️ Updated | Adds `run_expression_cycle()` to emit narrative pulses        |
+
+### 📝 Release Notes — skippy_expression_emit_v3
+    ✅ Skippy now emits traceable narrative (pulse_expression) using planner and tone tuner
+    ✅ Output is saved to expression_snapshot_log.jsonl with full intent context
+    ✅ Real expressive cognition loop is now online
