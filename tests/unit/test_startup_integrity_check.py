@@ -1,7 +1,13 @@
 import unittest
-from startup_integrity_check import run_integrity_check
+import startup_integrity_check
 
 class TestStartupIntegrityCheck(unittest.TestCase):
-    def test_integrity_check_runs(self):
-        result = run_integrity_check()
-        self.assertTrue("success" in result or "failed" in result)
+    def test_run_startup_checks(self):
+        try:
+            startup_integrity_check.run_startup_checks()
+        except Exception:
+            self.fail("Function run_startup_checks raised an unexpected exception")
+
+
+if __name__ == "__main__":
+    unittest.main()
