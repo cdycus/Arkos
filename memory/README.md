@@ -320,3 +320,23 @@ Audited via the decision_audit_log.jsonl
 ✅ No runtime wiring yet — all helper modules, testable in isolation
 
 ✅ Enables future wiring into expression, foresight, and governance
+
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+memory/trait_tracker.py — infers synthetic traits from emotion trends
+
+tests/test_trait_tracker.py — validates trait logic under various results
+
+✏️ Updated Files:
+memory/reflection_hook.py
+
+🧾 Release Notes (Patch 12 - Cognitive Fluidity Upgrade)
+✨ New Features:
+
+Memory decay ensures only recent behavior influences adaptation.
+
+Alignment scoring checks how well Skippy's actions align with mission goals.
+
+Synthetic trait engine models long-term emotional trends (e.g., optimism, caution).
