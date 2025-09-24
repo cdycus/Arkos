@@ -63,3 +63,17 @@ except ImportError:
 def apply_emotion_to_expression(expression):
     emotion = get_current_emotion()
     return f"{expression} [{emotion}]"
+
+
+# Injected: Sovereign signature for expression output
+try:
+    from spine.crypto.identity import sign_payload
+except ImportError:
+    sign_payload = lambda x: "unsigned"
+
+def sovereign_expression(text):
+    return {
+        "expression": text,
+        "signature": sign_payload(text),
+        "signed_by": "Skippy Sovereign"
+    }

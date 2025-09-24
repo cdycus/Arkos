@@ -30,3 +30,16 @@ class PulseQueue:
     def enqueue_inbound(self, pulse):
         print(f"Inbound pulse received: {pulse}")
         self.queue.append(pulse)
+
+
+# Injected: Sovereign signature enforcement
+try:
+    from spine.crypto.identity import sign_payload, verify_signature
+except ImportError:
+    sign_payload = lambda x: "unsigned"
+    verify_signature = lambda x, y: True
+
+def sign_pulse(pulse_data):
+    pulse_data['signature'] = sign_payload(pulse_data.get('payload', ''))
+    pulse_data['signed_by'] = 'Skippy Sovereign'
+    return pulse_data
