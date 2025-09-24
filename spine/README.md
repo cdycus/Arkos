@@ -1573,3 +1573,10 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
     ✅ Runs full Skippy loop from pulse to belief update
     ✅ Uses all integrated cognitive modules
     ✅ Logs results and prints trace output in dev console
+
+📦 Skippy Reflection Integration v2 — Runtime Self-Analysis
+
+### 📝 Release Notes — skippy_reflection_integration_v2
+    ✅ Skippy can now analyze its own decision trends
+    ✅ Emits structured reflection logs with trace-level summaries
+    ✅ Bridges decision → narrative → meta-cognition

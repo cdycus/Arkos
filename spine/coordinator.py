@@ -373,3 +373,15 @@ from spine.runtime.integration_hooks import refresh_beliefs
         print("🔁 Beliefs refreshed:")
         for b in updated:
             print(" -", b)
+
+
+from spine.runtime.integration_hooks import emit_reflection
+
+    def run_reflection_cycle(self):
+        pulse_history = [
+            {"pulse_id": "tick_001", "decision": "regulate", "confidence": 0.81},
+            {"pulse_id": "tick_002", "decision": "delay", "confidence": 0.77},
+            {"pulse_id": "tick_003", "decision": "regulate", "confidence": 0.83}
+        ]
+        result = emit_reflection(pulse_history)
+        print("🪞 Reflection Emitted:", result)

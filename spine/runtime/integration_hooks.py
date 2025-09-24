@@ -99,3 +99,13 @@ def update_state(pulse_history):
         import json
         f.write(json.dumps(pulse) + "\n")
     return state
+
+
+from mind.reflection.expression_reflection import build_reflection
+
+def emit_reflection(pulse_trace):
+    reflection = build_reflection(pulse_trace)
+    with open("data/reflection_log.jsonl", "a") as f:
+        import json
+        f.write(json.dumps(reflection) + "\n")
+    return reflection
