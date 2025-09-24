@@ -111,3 +111,33 @@ mind/decision/
 ├── foresight_weight_strategy.json
 data/
 └── meta_fusion_log.jsonl
+
+
+🔢 Modules to Deliver in This Drop
+| Module Path                                    | Function                                                |
+| ---------------------------------------------- | ------------------------------------------------------- |
+| `mind/decision/fusion_aware.py`                | Modifies foresight results using belief + drift input   |
+| `mind/decision/intent_selector.py`             | Chooses domain (policy, trust, ethics) based on context |
+| `mind/decision/pulse_feedback_tracer.py`       | Links feedback to decision context                      |
+| `mind/decision/foresight_weight_strategy.json` | JSON-based decision weights                             |
+| `data/meta_fusion_log.jsonl`                   | Logs trace of fusion decision factors                   |
+
+📦 Skippy Decision Stack v1 — Agentic Modulation Layer
+
+🔍 Files Added
+| File Path                                      | Type   | Description                                                  |
+| ---------------------------------------------- | ------ | ------------------------------------------------------------ |
+| `mind/decision/fusion_aware.py`                | 🆕 New | Applies drift + belief modifiers to fusion scoring           |
+| `mind/decision/intent_selector.py`             | 🆕 New | Selects foresight domain based on emotional/contextual state |
+| `mind/decision/pulse_feedback_tracer.py`       | 🆕 New | Links outcome feedback to original decision                  |
+| `mind/decision/foresight_weight_strategy.json` | 🆕 New | Configurable weights for foresight fusion                    |
+| `data/meta_fusion_log.jsonl`                   | 🆕 New | Trace of decision reasoning inputs                           |
+
+
+| File Path                                      | Type   | Description                                                  |
+| ---------------------------------------------- | ------ | ------------------------------------------------------------ |
+| `mind/decision/fusion_aware.py`                | 🆕 New | Applies drift + belief modifiers to fusion scoring           |
+| `mind/decision/intent_selector.py`             | 🆕 New | Selects foresight domain based on emotional/contextual state |
+| `mind/decision/pulse_feedback_tracer.py`       | 🆕 New | Links outcome feedback to original decision                  |
+| `mind/decision/foresight_weight_strategy.json` | 🆕 New | Configurable weights for foresight fusion                    |
+| `data/meta_fusion_log.jsonl`                   | 🆕 New | Trace of decision reasoning inputs                           |

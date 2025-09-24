@@ -1,0 +1,5 @@
+{
+  "confidence_weight": 0.6,
+  "alignment_weight": 0.3,
+  "belief_penalty": 0.1
+}
