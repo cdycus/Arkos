@@ -34,3 +34,10 @@ def handle_foresight_trigger(payload):
     )
 
     return foresight_result
+
+
+def enforce_governance(intent_payload):
+    # Hard gating example - must contain ethical approval
+    if not intent_payload.get('ethics_passed', False):
+        raise PermissionError("Foresight governance enforcement failed.")
+    return True
