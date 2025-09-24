@@ -1580,3 +1580,21 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
     ✅ Skippy can now analyze its own decision trends
     ✅ Emits structured reflection logs with trace-level summaries
     ✅ Bridges decision → narrative → meta-cognition
+
+
+📦 Skippy Intent Integration v2 — Goal-Aware Runtime
+🔍 Files Updated
+| File Path                            | Type        | Description                                                |
+| ------------------------------------ | ----------- | ---------------------------------------------------------- |
+| `spine/runtime/integration_hooks.py` | 🛠️ Updated | Added `compute_and_log_intent()` to determine goal + route |
+| `spine/coordinator.py`               | 🛠️ Updated | Adds `run_intent_cycle()` to test intent and log decisions |
+
+
+📝 Release Notes — skippy_intent_integration_v2
+
+✅ Skippy now selects and logs goal-directed intent during runtime
+
+✅ Can adapt cognition strategy based on mood and system state
+
+✅ Supports routing pulses toward mission-aligned modules
+

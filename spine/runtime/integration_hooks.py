@@ -109,3 +109,36 @@ def emit_reflection(pulse_trace):
         import json
         f.write(json.dumps(reflection) + "\n")
     return reflection
+
+
+from mind.intent.intent_selector import select_intent
+from mind.intent.intent_trace_router import route_by_intent
+
+def update_intent(context, pulse=None):
+    intent = select_intent(context)
+    route = route_by_intent(intent, pulse or {})
+    with open("data/intent_log.jsonl", "a") as f:
+        import json
+        f.write(json.dumps({
+            "timestamp": __import__('datetime').datetime.utcnow().isoformat() + "Z",
+            "intent": intent,
+            "route": route
+        }) + "\n")
+    return intent, route
+
+
+from mind.intent.intent_selector import select_intent
+from mind.intent.intent_trace_router import route_by_intent
+
+def compute_and_log_intent(context, pulse={}):
+    intent = select_intent(context)
+    route = route_by_intent(intent, pulse)
+    with open("data/intent_log.jsonl", "a") as f:
+        import json
+        f.write(json.dumps({
+            "intent": intent,
+            "route": route,
+            "pulse_type": pulse.get("type"),
+            "timestamp": __import__('datetime').datetime.utcnow().isoformat() + "Z"
+        }) + "\n")
+    return intent, route

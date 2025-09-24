@@ -385,3 +385,26 @@ from spine.runtime.integration_hooks import emit_reflection
         ]
         result = emit_reflection(pulse_history)
         print("🪞 Reflection Emitted:", result)
+
+
+from spine.runtime.integration_hooks import update_intent
+
+    def run_intent_cycle(self):
+        context = {
+            "mood": "misaligned",
+            "entropy": 0.66,
+            "fatigue": 0.52
+        }
+        pulse = {"type": "pulse_foresight_result"}
+        intent, route = update_intent(context, pulse)
+        print("🎯 Intent selected:", intent, "| Route:", route)
+
+
+from spine.runtime.integration_hooks import compute_and_log_intent
+
+    def run_intent_cycle(self):
+        context = {"mood": "strained", "entropy": 0.65, "fatigue": 0.72}
+        pulse = {"type": "pulse_state_of_being"}
+        intent, route = compute_and_log_intent(context, pulse)
+        print("🎯 Intent:", intent)
+        print("➡️ Routed to:", route)
