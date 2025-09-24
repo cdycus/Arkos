@@ -47,3 +47,13 @@ Displays pulse status of all three sovereign modules in real-time.
 Behavioral reflections now logged to adaptive_behavior_log.jsonl.
 
 Real-time telemetry dashboard now includes /behavior route showing memory bias state.
+
+
+🧾 Release Notes (Patch 25 - Live Diagnostic Shell)
+✨ New Features:
+
+Interactive command-line interface for Skippy introspection and manual triggering
+
+Flags: --state, --trait, --intent, --plan, --exec, --backup
+
+Debug, operate, and monitor Skippy in real time
