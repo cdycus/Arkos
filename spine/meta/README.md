@@ -17,3 +17,18 @@ spine/interface/telemetry_ui.py
 Behavioral reflections now logged to adaptive_behavior_log.jsonl.
 
 Real-time telemetry dashboard now includes /behavior route showing memory bias state.
+
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+spine/meta/trait_logger.py — logs current synthetic trait state to historical log
+
+spine/meta/trait_history.jsonl — rolling trait state memory log
+
+🧾 Release Notes (Patch 13 - Trait Persistence)
+✨ New Features:
+
+Traits (e.g., optimism, caution) are now saved to persistent trait history log.
+
+Can be queried or charted over time to monitor cognitive shifts.
