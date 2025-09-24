@@ -121,3 +121,24 @@ Added emotional context tagging to all expressed outputs.
 Unit test created for validating emotional patch behavior.
 ✏️ Updated Files:
 mind/expression/expression_engine.py
+
+📝 Changed Files in This Patch
+✏️ Updated Files:
+mind/expression/expression_engine.py
++ try:
++     from memory.reflection_hook import reflect_on_behavior
++ except ImportError:
++     reflect_on_behavior = lambda: {}
+
++ def bias_expression_choice(candidates):
++     bias = reflect_on_behavior().get('bias_avoid_intent')
++     if bias and bias in candidates:
++         candidates.remove(bias)
++     return candidates[0] if candidates else "fallback_expression"
+
+🧾 Release Notes (Patch 10 - Reflection-Aware Expression Biasing)
+✨ New Features:
+
+Expression selection now avoids recently failed intents automatically.
+
+Builds adaptive behavior loop powered by recent memory analysis.

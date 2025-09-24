@@ -77,3 +77,16 @@ def sovereign_expression(text):
         "signature": sign_payload(text),
         "signed_by": "Skippy Sovereign"
     }
+
+
+# Injected: Reflection bias hook
+try:
+    from memory.reflection_hook import reflect_on_behavior
+except ImportError:
+    reflect_on_behavior = lambda: {}
+
+def bias_expression_choice(candidates):
+    bias = reflect_on_behavior().get('bias_avoid_intent')
+    if bias and bias in candidates:
+        candidates.remove(bias)
+    return candidates[0] if candidates else "fallback_expression"
