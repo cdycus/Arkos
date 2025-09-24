@@ -142,3 +142,21 @@ mind/expression/expression_engine.py
 Expression selection now avoids recently failed intents automatically.
 
 Builds adaptive behavior loop powered by recent memory analysis.
+
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+mind/expression/plan_executor.py — executes full action plans into signed expressions
+
+tests/test_plan_executor.py — validates step-by-step sovereign output logic
+
+🧾 Release Notes (Patch 18 - Autonomous Plan Execution)
+✨ New Features:
+
+Skippy now expresses sovereign behavior through multi-step signed plans.
+
+Each step reflects current emotion and synthetic trait.
+
+
+
