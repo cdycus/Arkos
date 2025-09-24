@@ -147,5 +147,41 @@ Add cv_engine.py, audio_listener.py, realtime_loop.py
 | 🔁 Step 3 | Return to `mind/state/` and finalize internal cognitive loop  |
 | 🔂 Step 4 | Wire the system tick loop and test self-awareness pulse cycle |
 
+This version will be completely modular, non-functional for now, but designed to be safely wired later without rework.
+
+🧠 Perception Stack v1 — Mission
+
+“Skippy knows something was seen, heard, or sensed — and logs it for future reasoning.”
+
+🧩 What We’ll Deliver in This Stack
+| File                                        | Purpose                                     |
+| ------------------------------------------- | ------------------------------------------- |
+| `mind/perception/video_input_stub.py`       | Placeholder for camera or file input        |
+| `mind/perception/audio_input_stub.py`       | Placeholder for mic input                   |
+| `mind/perception/pulse_perception_event.py` | Pulse template for any observed stimulus    |
+| `mind/perception/perception_logger.py`      | Logs each perceptual input for traceability |
+| `data/visual_input_log.jsonl`               | Records all visual events                   |
+| `data/audio_input_log.jsonl`                | Records all auditory events                 |
+
+
+✅ No real CV or audio yet — just the receiving infrastructure.
+
+Would you like me to begin creating all these modules now?
+🔍 Files Added
+
+| File Path                                   | Type   | Description                                    |
+| ------------------------------------------- | ------ | ---------------------------------------------- |
+| `mind/perception/video_input_stub.py`       | 🆕 New | Logs receipt of video stream (stub only)       |
+| `mind/perception/audio_input_stub.py`       | 🆕 New | Logs receipt of audio stream (stub only)       |
+| `mind/perception/pulse_perception_event.py` | 🆕 New | Creates traceable pulse for visual/audio input |
+| `mind/perception/perception_logger.py`      | 🆕 New | Logs perceptual events by type                 |
+| `data/visual_input_log.jsonl`               | 🆕 New | Tracks visual input events                     |
+| `data/audio_input_log.jsonl`                | 🆕 New | Tracks audio input events                      |
+
+📝 Release Notes — skippy_perception_stack_v1
+    ✅ Introduces visual and audio input awareness
+    ✅ Logs inputs without processing
+    ✅ Sets foundation for future CV/audio pipelines
+
 
 
