@@ -26,3 +26,16 @@
     ✅ Interact with Skippy via curl or browser POSTs (localhost:8088/mind)
     ✅ Improved CLI with trace logs and formatted output
     ✅ Unified input/output entry logs in mind_entry_log.jsonl
+
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+spine/interface/telemetry_ui.py — FastAPI-based live dashboard for pulse status
+
+🧾 Release Notes (Patch 4 - Telemetry UI)
+✨ New Features:
+
+Deployed a live web-based telemetry dashboard at / route.
+
+Displays pulse status of all three sovereign modules in real-time.
