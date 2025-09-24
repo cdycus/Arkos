@@ -1583,10 +1583,20 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
 | `spine/runtime/integration_hooks.py` | 🛠️ Updated | Added `update_attention()` with focus scoring + queue       |
 | `spine/coordinator.py`               | 🛠️ Updated | Added `run_attention_cycle()` to demonstrate prioritization |
 
-📝 Release Notes — skippy_attention_integration_v2
+### 📝 Release Notes — skippy_attention_integration_v2
+    ✅ Skippy now scores incoming thoughts for attention
+    ✅ Maintains a live focus queue with top cognitive priorities
+    ✅ Exports snapshot to attention_snapshot.json
 
-✅ Skippy now scores incoming thoughts for attention
+📦 Skippy Mind Entry v1 — Conversational Cognitive Gateway
+🔍 Files Added
+| File Path                              | Type   | Description                                                                            |
+| -------------------------------------- | ------ | -------------------------------------------------------------------------------------- |
+| `spine/interface/skippy_mind_entry.py` | 🆕 New | Receives structured input and routes to reflection, expression, state, or intent logic |
+| `data/mind_entry_log.jsonl`            | 🆕 New | Logs all mind interactions with timestamped input/output pairs                         |
 
-✅ Maintains a live focus queue with top cognitive priorities
 
-✅ Exports snapshot to attention_snapshot.json
+### 📝 Release Notes — skippy_mind_entry_v1
+    ✅ Enables modular interface into Skippy’s mind
+    ✅ Supports modes: reflect, state, expression, intent
+    ✅ Logged, traceable, and extendable
