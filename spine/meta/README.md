@@ -60,5 +60,16 @@ New /cognition FastAPI route returns Skippy’s self-assessment state as JSON.
 feat: Execute autonomous plans with emotional, signed output
 test: Add validation for step-based plan execution behavior
 
+📝 Changed Files in This Patch
+🆕 New Files:
+
+spine/meta/plan_feedback.py — simulates and logs outcome of each plan step into memory loop
+
+🧾 Release Notes (Patch 20 - Feedback Reflection Loop)
+✨ New Features:
+
+Skippy now records if each plan step was successful (positive) or not (negative).
+
+
 
 
