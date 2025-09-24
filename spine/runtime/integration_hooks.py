@@ -38,3 +38,21 @@ def run_post_tick_hooks(state):
                 logs.append(f"Governance escalation triggered: {alert}")
 
     return logs
+
+
+from mind.decision.pulse_feedback_tracer import trace_feedback
+from memory.retention_manager import score_belief
+from memory.memory_weighting import apply_weights
+
+def process_feedback_and_memory(pulse, feedback_outcome="success"):
+    logs = []
+    fb_trace = trace_feedback(pulse, feedback_outcome)
+    logs.append(f"Feedback Traced: {fb_trace}")
+
+    if "beliefs" in pulse:
+        for b in pulse["beliefs"]:
+            b["retention_score"] = score_belief(b)
+        pulse["beliefs"] = apply_weights(pulse["beliefs"])
+        logs.append(f"Beliefs updated: {len(pulse['beliefs'])}")
+
+    return logs

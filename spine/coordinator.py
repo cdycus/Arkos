@@ -332,3 +332,23 @@ import json
             run_post_tick_hooks(state)
         except Exception as e:
             print("Hook error:", e)
+
+
+from spine.runtime.integration_hooks import process_feedback_and_memory
+
+    def run_feedback_cycle(self):
+        pulse = {
+            "pulse_id": "test_pulse_123",
+            "type": "pulse_foresight_result",
+            "decision": "regulate now",
+            "confidence": 0.87,
+            "beliefs": [
+                {"statement": "regulation improves outcome", "confidence": 0.82, "used": 3, "timestamp": "2024-01-01"},
+                {"statement": "risk is elevated", "confidence": 0.77, "used": 5, "timestamp": "2023-08-01"}
+            ]
+        }
+        outcome = "success"
+        logs = process_feedback_and_memory(pulse, outcome)
+        print("Feedback + Memory Loop:")
+        for log in logs:
+            print(" -", log)

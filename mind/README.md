@@ -69,3 +69,36 @@ Then we move to:
 🧠 mind/state/ for cognitive posture modeling
 
 ⚡ Runtime wiring and tick integration (Phase 2)
+
+🧠 Integration Stage 2 — Cognitive Feedback Loop
+
+From foresight → belief → outcome → memory → reflection.
+🔁 Loop We’re Connecting Now
+graph TD
+    A[Foresight Trigger] --> B[Decision Engine (fusion_aware)]
+    B --> C[Belief Injection]
+    C --> D[Foresight Result]
+    D --> E[Feedback Label (pulse_feedback_tracer)]
+    E --> F[Memory Update (retention, weight)]
+    F --> G[Expression Planner]
+    G --> H[pulse_expression]
+
+📦 Modules to Wire
+| Module                                   | Role                                                 |
+| ---------------------------------------- | ---------------------------------------------------- |
+| `mind/decision/fusion_aware.py`          | Apply belief + drift scoring                         |
+| `mind/decision/pulse_feedback_tracer.py` | Record pulse feedback link                           |
+| `memory/retention_manager.py`            | Score belief retention                               |
+| `memory/memory_weighting.py`             | Apply weight decay or promotion                      |
+| `mind/expression/expression_planner.py`  | Summarize current state from belief/feedback context |
+
+
+
+✅ All of these already exist — now we link them into the runtime hooks.
+
+🔧 What We’ll Build
+| File                                   | Description                                       |
+| -------------------------------------- | ------------------------------------------------- |
+| 🔁 Update `integration_hooks.py`       | Inject and trace feedback, memory, and expression |
+| 📦 Patch `PulseCoordinator.run_tick()` | Send full pulse into state context                |
+| 🧾 Add belief + trace linkage          | Trace “why” Skippy chose something, for auditing  |
