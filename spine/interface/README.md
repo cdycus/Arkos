@@ -39,3 +39,11 @@ spine/interface/telemetry_ui.py — FastAPI-based live dashboard for pulse statu
 Deployed a live web-based telemetry dashboard at / route.
 
 Displays pulse status of all three sovereign modules in real-time.
+
+
+🧾 Release Notes (Patch 11 - Adaptive Audit + Telemetry)
+✨ New Features:
+
+Behavioral reflections now logged to adaptive_behavior_log.jsonl.
+
+Real-time telemetry dashboard now includes /behavior route showing memory bias state.

@@ -24,3 +24,17 @@ def telemetry_dashboard():
             html += f"<li><b>{name}</b>: ❌ Offline</li>"
     html += """</ul></body></html>"""
     return html
+
+
+@app.get("/behavior", response_class=HTMLResponse)
+def behavior_bias_view():
+    try:
+        from memory.reflection_hook import reflect_on_behavior
+        reflection = reflect_on_behavior()
+        html = f"""<html><body>
+        <h3>Behavioral Reflection State</h3>
+        <pre>{json.dumps(reflection, indent=2)}</pre>
+        </body></html>"""
+    except Exception as e:
+        html = f"""<html><body><h3>Error</h3><pre>{e}</pre></body></html>"""
+    return html
