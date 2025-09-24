@@ -57,3 +57,15 @@ Interactive command-line interface for Skippy introspection and manual triggerin
 Flags: --state, --trait, --intent, --plan, --exec, --backup
 
 Debug, operate, and monitor Skippy in real time
+
+
+📖 Usage Doc (auto-included in CLI help):
+
+You’ll get full flag list + examples like:
+python mind_cli.py --state
+python mind_cli.py --plan
+python mind_cli.py --exec
+python mind_cli.py --history plan
+
+
+
