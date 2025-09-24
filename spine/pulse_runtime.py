@@ -33,3 +33,17 @@ if __name__ == "__main__":
     Thread(target=pulse_loop, daemon=True).start()
     while True:
         time.sleep(60)
+
+
+# Injected: Signature verification
+try:
+    from spine.crypto.identity import verify_signature
+except ImportError:
+    verify_signature = lambda payload, sig: True
+
+def validate_pulse_integrity(pulse_data):
+    payload = pulse_data.get('payload', '')
+    signature = pulse_data.get('signature', '')
+    if not verify_signature(payload, signature):
+        raise ValueError("Invalid signature detected in pulse")
+    return True

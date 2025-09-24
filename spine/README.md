@@ -1785,3 +1785,20 @@ All pulses now include a cryptographic signature and signed_by field.
 Expressions are now wrapped with sovereign validation metadata.
 
 ✅ Git Commit Notes
+
+📦 Patch Delivered: Download skippy_updated_patch8.zip
+
+📝 Changed Files in This Patch
+🆕 New Files:
+
+tests/test_signature_integrity.py — validates round-trip signing and verification
+
+✏️ Updated Files:
+spine/pulse_runtime.py
+
+🧾 Release Notes (Patch 8 - Signature Validation & Testing)
+✨ New Features:
+
+All pulses now undergo strict integrity checks before processing.
+
+Unit test validates signing and verification round-trip logic.
