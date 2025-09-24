@@ -80,3 +80,10 @@ def emit_expression():
         }) + "\n")
 
     return tuned
+
+
+from memory.belief_updater import update_beliefs_from_expression
+
+def refresh_beliefs(beliefs, last_expression_text):
+    updated = update_beliefs_from_expression(beliefs, last_expression_text)
+    return updated

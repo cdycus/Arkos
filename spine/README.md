@@ -1546,3 +1546,20 @@ Proceeding with the addition of Fail-Safe Pulse Mode to protect core logic by by
     ✅ Skippy now emits traceable narrative (pulse_expression) using planner and tone tuner
     ✅ Output is saved to expression_snapshot_log.jsonl with full intent context
     ✅ Real expressive cognition loop is now online
+
+
+📦 Skippy Belief Refresh v4 — Expression-to-Belief Integration
+🔍 Files Added / Updated
+
+| File Path                            | Type        | Description                                            |
+| ------------------------------------ | ----------- | ------------------------------------------------------ |
+| `memory/belief_updater.py`           | 🆕 New      | Updates belief confidence/usage from recent expression |
+| `spine/runtime/integration_hooks.py` | 🛠️ Updated | Added `refresh_beliefs()` using expression trace       |
+| `spine/coordinator.py`               | 🛠️ Updated | New `run_belief_refresh_cycle()` for test triggering   |
+
+
+### 📝 Release Notes — skippy_belief_refresh_v4
+    ✅ Beliefs now evolve in response to expression content
+    ✅ Confidence increases when expressed beliefs are reinforced
+    ✅ Fully looped: cognition → action → expression → memory
+

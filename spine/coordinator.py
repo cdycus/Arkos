@@ -359,3 +359,17 @@ from spine.runtime.integration_hooks import emit_expression
     def run_expression_cycle(self):
         result = emit_expression()
         print("🗣️ Expression emitted:", result)
+
+
+from spine.runtime.integration_hooks import refresh_beliefs
+
+    def run_belief_refresh_cycle(self):
+        expr_text = "Skippy expressing: regulation improves outcome"
+        beliefs = [
+            {"statement": "regulation improves outcome", "confidence": 0.65, "used": 2, "timestamp": "2024-01-01"},
+            {"statement": "risk is elevated", "confidence": 0.77, "used": 5, "timestamp": "2023-08-01"}
+        ]
+        updated = refresh_beliefs(beliefs, expr_text)
+        print("🔁 Beliefs refreshed:")
+        for b in updated:
+            print(" -", b)
